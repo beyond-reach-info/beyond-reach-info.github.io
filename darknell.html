@@ -1,0 +1,435 @@
+<!doctype html><html lang="en"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Darknell Run Guide</title>
+<link rel="stylesheet" href="translation.css">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: one reading column with sticky tabs. Run setup (types, roles, opening minute, where to stand, lure) first, then the sequence, then every attack with its picture */
+:root{
+  --bg:#f4f2f5; --surface:#ffffff; --fg:#1e1a22; --muted:#605a68; --line:#e0dbe4;
+  --danger:#c0362c; --danger-bg:#fdecea;
+  --fly:#8a6a00; --fly-bg:#fff3bf;
+  --meteor:#b4233f; --meteor-bg:#fbe7ec;
+  --ok:#5a3d8f; --ok-bg:#eee8f7; --ok-fg:#3b2668;
+  --neutral-bg:#ecebef; --neutral-fg:#46424d;
+  --ori:#0f7c78; --ori-bg:#e0f3f1;
+  --stun:#b45309; --stun-bg:#fdf0dd;
+  --sprite-bg:#ffffff;
+  --accent:#a0234a;
+  --display:"Marcellus",Georgia,"Times New Roman",serif;
+  --body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15121a; --surface:#1f1a25; --fg:#eeebf2; --muted:#aaa3b5; --line:#322b3b;
+  --danger:#f08a7f; --danger-bg:#3a1c1a; --fly:#f2d16b; --fly-bg:#3a3110;
+  --meteor:#f28aa0; --meteor-bg:#3b1a24; --ok:#b9a0ee; --ok-bg:#271e3a; --ok-fg:#d8cbf7;
+  --neutral-bg:#2b2633; --neutral-fg:#cbc6d4; --ori:#5fd1c9; --ori-bg:#143230;
+  --stun:#f2a656; --stun-bg:#3a2810; --sprite-bg:#f4f3f8; --accent:#f07ca0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15121a; --surface:#1f1a25; --fg:#eeebf2; --muted:#aaa3b5; --line:#322b3b;
+  --danger:#f08a7f; --danger-bg:#3a1c1a; --fly:#f2d16b; --fly-bg:#3a3110;
+  --meteor:#f28aa0; --meteor-bg:#3b1a24; --ok:#b9a0ee; --ok-bg:#271e3a; --ok-fg:#d8cbf7;
+  --neutral-bg:#2b2633; --neutral-fg:#cbc6d4; --ori:#5fd1c9; --ori-bg:#143230;
+  --stun:#f2a656; --stun-bg:#3a2810; --sprite-bg:#f4f3f8; --accent:#f07ca0; color-scheme:dark}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:940px;margin:0 auto;padding-block:24px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:30px}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
+h1{font-size:2rem;line-height:1.15}
+h2{font-size:1.55rem}
+h3{font-size:1.15rem}
+p{margin:0}
+ul,ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--muted)}
+.sub{color:var(--muted)}
+
+.guild{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.guild-name{font-family:var(--display);font-size:1.15rem;letter-spacing:.04em;color:var(--accent)}
+.guild-tag{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--danger);border:1px solid var(--danger);border-radius:999px;padding:2px 8px}
+.byline{margin-top:6px;font-weight:700}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.85rem}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:8px;border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto}
+nav a{flex:none;text-decoration:none;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:800;font-size:.88rem}
+nav a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+section{scroll-margin-top:64px;display:flex;flex-direction:column;gap:14px}
+.phead{display:flex;flex-direction:column;gap:4px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chip{display:inline-block;align-self:flex-start;border-radius:6px;padding:2px 10px;font-weight:800;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.chip.hard{background:var(--danger-bg);color:var(--danger)}
+.chip.easy{background:var(--ori-bg);color:var(--ori)}
+.warnbox{background:var(--danger-bg);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.warnbox strong{color:var(--danger);font-size:1.02rem}
+
+/* roles */
+.roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.role{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.role b{font-size:1rem}
+.role span{color:var(--muted);font-size:.88rem}
+.role .n{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+
+/* timeline */
+.tl{display:flex;flex-direction:column;gap:6px}
+.step{display:grid;grid-template-columns:100px minmax(0,1fr);gap:10px;align-items:center}
+.when{font-weight:800;font-variant-numeric:tabular-nums;font-size:.9rem}
+.what{border-radius:8px;padding:6px 10px;font-weight:700;font-size:.9rem;min-width:0}
+.what.ori{background:var(--ori-bg);color:var(--ori)}
+.what.stun{background:var(--stun-bg);color:var(--stun)}
+.what.fly{background:var(--fly-bg);color:var(--fly)}
+.what.hit{background:var(--neutral-bg);color:var(--neutral-fg)}
+.what.warn{background:var(--danger-bg);color:var(--danger)}
+
+/* sequence */
+.seqgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.seqcol{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.seqcol h3{font-family:var(--body);font-weight:800;font-size:1rem;color:var(--accent)}
+.mv{border-radius:7px;padding:4px 8px;font-weight:800;font-size:.86rem;display:flex;justify-content:space-between;gap:6px}
+.mv small{font-weight:600;opacity:.85}
+.mv.meteor{background:var(--meteor-bg);color:var(--meteor)}
+.mv.fly{background:var(--fly-bg);color:var(--fly)}
+.mv.plain{background:var(--neutral-bg);color:var(--neutral-fg)}
+.mv.rep{border:1px dashed var(--line);color:var(--muted);font-weight:600}
+.mv.ori{background:var(--ori-bg);color:var(--ori)}
+.mv.stun{background:var(--stun-bg);color:var(--stun)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.82rem;color:var(--muted)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+
+/* figures */
+figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+figcaption{font-size:.82rem;color:var(--muted)}
+.zoom{all:unset;cursor:zoom-in;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.zoom img{display:block;width:100%;height:auto}
+.zoom.sprite{background:var(--sprite-bg)}
+.zoom.sprite img{max-height:200px;object-fit:contain;padding:6px;box-sizing:border-box}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+
+/* attacks */
+.group{display:flex;flex-direction:column;gap:10px}
+.gh{font-weight:800;font-size:.95rem}
+.gh.danger{color:var(--danger)} .gh.meteor{color:var(--meteor)} .gh.elite{color:var(--ok-fg)} .gh.plain{color:var(--muted)}
+.atks{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.atk{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.atk.danger{border-color:var(--danger)}
+.an{font-weight:800;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.aka{font-size:.8rem;color:var(--muted);font-weight:600}
+.atk p{font-size:.88rem}
+.atk .do b{color:var(--accent)}
+.tag{display:inline-flex;border-radius:999px;padding:1px 9px;font-size:.72rem;font-weight:800;white-space:nowrap;background:var(--neutral-bg);color:var(--neutral-fg)}
+.tag.ph{background:var(--ok-bg);color:var(--ok-fg)}
+.tag.stun{background:var(--stun-bg);color:var(--stun)}
+
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.term{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.term b{display:block}
+.term span{color:var(--muted);font-size:.88rem}
+.foot{color:var(--muted);font-size:.85rem}
+.foot a{color:var(--accent)}
+
+dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1100px)}
+dialog::backdrop{background:rgba(10,8,16,.85)}
+dialog img{display:block;max-width:100%;max-height:82vh;border-radius:10px;background:#fff}
+dialog p{color:#fff;margin-top:8px;font-size:.9rem}
+dialog button{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;border:0;border-radius:999px;width:36px;height:36px;font-size:1.2rem;cursor:pointer}
+
+@media (max-width:760px){.seqgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.grid2{grid-template-columns:1fr}.step{grid-template-columns:78px minmax(0,1fr)}h1{font-size:1.7rem}}
+</style>
+
+<main class="wrap">
+  <a href="./#bosses" style="color:var(--accent);font-weight:800;align-self:flex-start;min-height:44px;display:inline-flex;align-items:center">&larr; Info &amp; Boss guides</a>
+  <header>
+    <div class="guild"><span class="guild-name">BeyondReach</span><span class="guild-tag">Internal use only</span><div class="translation-actions" role="group" aria-label="Translate this page"><a class="translate-link" href="https://translate.google.com/translate?sl=auto&amp;tl=th&amp;u=https%3A%2F%2Fbeyond-reach-info.github.io%2Fdarknell.html" target="_blank" rel="noopener" lang="th" translate="no" aria-label="แปลเป็นไทยผ่าน Google Translate (เปิดแท็บใหม่)" title="Google Translate - Opens in a new tab">แปลเป็นไทย <span aria-hidden="true">EN &rarr; TH</span></a><a class="translate-link" href="https://translate.google.com/translate?sl=en&amp;tl=zh-CN&amp;u=https%3A%2F%2Fbeyond-reach-info.github.io%2Fdarknell.html" target="_blank" rel="noopener" lang="zh-Hans" translate="no" aria-label="Translate English to Simplified Chinese with Google Translate (opens in a new tab)" title="Google Translate - Opens in a new tab">简体中文 <span aria-hidden="true">EN &rarr; ZH</span></a></div></div>
+    <div class="label">MapleStory M · Guild boss guide</div>
+    <h1>Darknell Run Guide</h1>
+    <p class="byline">Compiled by Faye · Updated Oct 21, 2026</p>
+    <p class="sub">For reference only. Info may not be fully accurate and will keep being updated. Tap any picture to enlarge it.</p>
+    <div class="facts">
+      <span class="fact"><b>Lv. 250+</b></span>
+      <span class="fact"><b>6</b> per guild team (max 10)</span>
+      <span class="fact"><b>10 min</b></span>
+      <span class="fact"><b>1 clear</b> a week (resets Thu midnight)</span>
+      <span class="fact"><b>10 revives</b> for the whole team</span>
+      <span class="fact">Aim for <b>70% DEF Ignore</b>, <b>880 ARC</b></span>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;font-size:.85rem"><b style="padding:4px 12px;border-radius:999px;background:var(--fg);color:var(--bg)">English</b><a href="https://claude.ai/artifact/MneSHuZRrrG6NrHJfPzXPn" target="_blank" rel="noopener" style="padding:4px 12px;border-radius:999px;border:1px solid var(--line);color:var(--fg);text-decoration:none;font-weight:700">中文</a><a href="https://claude.ai/artifact/DbkJ7yY6UiJn4w2Kzh8gwy" target="_blank" rel="noopener" style="padding:4px 12px;border-radius:999px;border:1px solid var(--line);color:var(--fg);text-decoration:none;font-weight:700">ไทย</a></div>
+  </header>
+
+  <div class="warnbox" style="background:var(--ok-bg)">
+    <strong style="color:var(--ok-fg);font-size:1.2rem">Nodes: use Withstand 2 unless you're the pin or an experienced DPS.</strong>
+    <p><b>Everyone else runs Withstand 2. That's our standard.</b></p>
+  </div>
+
+  <div class="warnbox">
+    <strong>One hit won't KO you. Combos will.</strong>
+    <p>A single hit from the boss won't kill you. What kills you is <b>combo death</b>: getting hit by two things at the same time, like a light beam plus the blue ball, or a dash right into a meteor. Dodge so you're never caught by two at once.</p>
+  </div>
+
+  <nav aria-label="Sections">
+    <a href="#runs">Run types</a>
+    <a href="#roles">Roles</a>
+    <a href="#opening">Opening</a>
+    <a href="#stand">Where to stand</a>
+    <a href="#lure">Lure</a>
+    <a href="#sequence">Sequence</a>
+    <a href="#attacks">Attacks</a>
+    <a href="#words">Words</a>
+    <a href="#rewards">Rewards</a>
+  </nav>
+
+  <section id="runs" aria-labelledby="runs-h">
+    <div class="phead"><div class="label">Pick your run</div><h2 id="runs-h">Two kinds of guild runs</h2><p class="sub">You'll be ready for each type at a different level. Start with Type 2.</p></div>
+    <div class="grid2">
+      <div class="card">
+        <span class="chip hard">Type 1 · harder</span>
+        <h3>LK/Faye team</h3>
+        <ul>
+          <li>LK pins, Faye supports as Sia</li>
+          <li>No detailed calls. Commands cover the basics only</li>
+          <li>You need to know your own role and the general sequence. You don't have to memorize every step; we react to situations.</li>
+          <li>If Darknell teleports out on a dive, that's bad luck. Main team keeps DPS and waits for him to come back. <b>Don't chase him.</b></li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="chip easy">Type 2 · easier</span>
+        <h3>Dro commands</h3>
+        <ul>
+          <li>Dro pins and calls the whole sequence in detail</li>
+          <li>Comes with a bsp support</li>
+          <li>More room for error, good for learning</li>
+          <li>Calls include when the lure flies up to the left corner on a dive</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="roles" aria-labelledby="roles-h">
+    <div class="phead"><div class="label">Six per team</div><h2 id="roles-h">Who does what</h2></div>
+    <div class="roles">
+      <div class="role"><span class="n">1</span><b>Pin</b><span>Holds Darknell in place for the team.</span></div>
+      <div class="role"><span class="n">2</span><b>Blocker 1</b><span>Blocks meteors. Takes turns with Blocker 2.</span></div>
+      <div class="role"><span class="n">3</span><b>Blocker 2</b><span>Blocks meteors. Takes turns with Blocker 1.</span></div>
+      <div class="role"><span class="n">4</span><b>3rd DPS (cover)</b><span>Covers any meteor the blockers miss, like a skill on cooldown or bad timing.</span></div>
+      <div class="role"><span class="n">5</span><b>Slot 5 support</b><span>Sia or bsp, the “5th slot support position”. Origins on a separate timing (the “8:08”, not a fixed time) for a separate stun, then again around 4:08. Also chain-stuns after team origins.</span></div>
+      <div class="role"><span class="n">6</span><b>Lure</b><span>Pulls the elites to the right side so they leave the team alone. Looks like a leech slot, but it isn't easy to survive.</span></div>
+    </div>
+  </section>
+
+  <section id="opening" aria-labelledby="opening-h">
+    <div class="phead"><div class="label">The run flow</div><h2 id="opening-h">First minute and origin timings</h2><p class="sub">The timer counts down from 10:00.</p></div>
+    <div class="card">
+      <div class="label">Survive the first minute</div>
+      <div class="tl">
+        <div class="step"><div class="when">9:56</div><div class="what ori">Everyone origins except the slot 5 support (Sia or bsp), who holds it for the 8:08</div></div>
+        <div class="step"><div class="when">9:44</div><div class="what stun">He dashes to the corner → stun</div></div>
+        <div class="step"><div class="when">9:10</div><div class="what fly">Fixed: everyone fly up (dive)</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">After that</div>
+      <div class="tl">
+        <div class="step"><div class="when">~8:26</div><div class="what hit">The stun origin is ready again (9:56 minus 1.5 min stun cooldown)</div></div>
+        <div class="step"><div class="when">“8:08”</div><div class="what stun">Slot 5 support origins. Wait for a few more patterns until a dive, then origin to stun and cancel that dive.</div></div>
+        <div class="step"><div class="when">+0.5–1 min</div><div class="what warn">Lure moves to the right side of the map</div></div>
+        <div class="step"><div class="when">~5 min</div><div class="what ori">Team origin together on call (±10 sec, timed for a dive or a good stun)</div></div>
+        <div class="step"><div class="when">~4:08</div><div class="what stun">Slot 5 support origins again (4 min after their 8:08, so it moves with it)</div></div>
+        <div class="step"><div class="when">~1 min</div><div class="what ori">Team origin together on call</div></div>
+      </div>
+      <div class="warnbox"><strong>8:08 is not a fixed time</strong><p>It's just what we call it. The real moment is the first dive after the stun origin is back (~8:26 or later), so it can be ±5 sec or more depending on the run. Same for ~4:08. Wait for the dive and listen to command, not the clock.</p></div>
+      <ul>
+        <li>Origin cooldown is <b>4 min</b>. The stun cooldown is <b>1.5 min</b>.</li>
+        <li><b>Chain stun:</b> after each team origin, someone (usually the slot 5 support) counts <b>8 seconds</b> and casts a stun. The real window is 10 sec, but if you're slow, Darknell wakes up before the chain.</li>
+        <li>After the opening, just wait for the call to origin together. Listen to command.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="label">Phase markers on the HP bar</div>
+      <figure><button type="button" class="zoom" data-src="img/darknell/u-hp-stages.jpg" data-cap="HP bar split into 4 stages. Stage 1 starts on the right."><img src="img/darknell/u-hp-stages.jpg" alt="Darknell HP bar with stage markers 1 to 4"></button><figcaption>The HP bar is split into 4 stages, starting from the right. New elites join at later stages (see Attacks).</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="stand" aria-labelledby="stand-h">
+    <div class="phead"><div class="label">Read this twice</div><h2 id="stand-h">Where the main team stands</h2></div>
+    <div class="warnbox">
+      <strong>Only 3 people of space on the left. Never stand at the 4th spot or further.</strong>
+      <p>Most DPS stand too far out in their first 3–4 runs and think the 4th spot is safe. It isn't. It's a strict, narrow area.</p>
+      <p>If the elites spot you and come to the left side, everyone can die, pin included. Even if you fly up and dodge, others die, pin dies out, and the run fails and needs a rerun.</p>
+      <p>If you need to avoid danger, don't sidestep a little to the right. Going further right is also OK.</p>
+    </div>
+    <div class="figs">
+      <figure><button type="button" class="zoom" data-src="img/darknell/u-lure-range-marked.jpg" data-cap="Spots 1, 2, 3 are the main team's space. Spot 4 and anything further right is NO."><img src="img/darknell/u-lure-range-marked.jpg" alt="Darknell map with spots 1, 2, 3 marked as safe and spot 4 marked NO" loading="lazy"></button><figcaption>Spots 1, 2, 3 are the main team's space. Spot 4 and anything further right (yellow X) is NO.</figcaption></figure>
+    </div>
+    <div class="card">
+      <div class="label">What you're dodging</div>
+      <ul>
+        <li><b>Light beam</b> (Pillar of Light): a narrow beam shows first as a warning and is still safe. About 1 sec later it turns into a fat beam that hurts. Move when you see the narrow one.</li>
+        <li><b>Blue ball</b>: one of the main things that kills you, in all 4 phases. Pictures below.</li>
+        <li><b>Dive</b>: he flies up and smashes the ground. Fly up to dodge.</li>
+        <li><b>Meteors</b> are for the blockers. Stay tucked in and keep hitting.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="lure" aria-labelledby="lure-h">
+    <div class="phead"><div class="label">Role guide</div><h2 id="lure-h">Playing the lure</h2></div>
+    <div class="card">
+      <div class="label">What the lure dodges</div>
+      <ul>
+        <li><b>Blue cloud</b>: Vicious Hunter's Summon Chains, a big blue area. Get out of it.</li>
+        <li><b>The elites' attacks</b>: snipes, stuns and chains (all pictured under Attacks).</li>
+        <li>Plus the same light beams, blue balls and dives as everyone else.</li>
+      </ul>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="label">Your job</div>
+        <ul>
+          <li>About 0.5–1 min after the 8:08 origin, go to the <b>right side</b> to draw the elites away. Everyone else tucks in on the left.</li>
+          <li>On a dive, Darknell teleports to a random player. If it's you, fly up to the left corner to be with the team. In Type 2, Dro calls this.</li>
+          <li>Around the ~5 min and ~1 min team origins, jump left on the call, origin with the team, then jump back to lure.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="label">Staying alive</div>
+        <ul>
+          <li>Survival comes first. Use i-frames, walk, dash and teleport left and right, and fly up whenever you can.</li>
+          <li>Missing the dive timing is fine, like when dive comes while fly is on cooldown. Just survive.</li>
+          <li>Scared? Just fly up every time it's ready.</li>
+          <li>Want to register damage? You can come at most to the <b>middle</b> of the map. Never cross the middle. If you can't hit from there, don't hit.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warnbox">
+      <strong>If the lure dies</strong>
+      <p>One of the DPS has to leave and take over lure. That's one less person hitting on the left, so the run gets slower and might fail.</p>
+    </div>
+  </section>
+
+  <section id="sequence" aria-labelledby="seq-h">
+    <div class="phead"><div class="label">Sequence command notes · BR</div><h2 id="seq-h">The sequence by phase</h2><p class="sub">Each phase repeats its list. P1 doesn't matter.</p></div>
+    <div class="legend"><span><i class="sw" style="background:var(--meteor)"></i>Meteor: blockers</span><span><i class="sw" style="background:var(--fly)"></i>Dive: fly up</span><span><i class="sw" style="background:var(--neutral-fg)"></i>Other</span></div>
+    <div class="seqgrid" id="seqgrid"></div>
+    <div class="warnbox"><strong>Every phase: watch the blue ball</strong><p>The blue ball shows up in all 4 phases and is one of the main team killers. Keep an eye on it the whole run, on top of the sequence. See the picture under Attacks.</p></div>
+  </section>
+
+  <section id="attacks" aria-labelledby="atk-h">
+    <div class="phead"><div class="label">Every attack, with pictures</div><h2 id="atk-h">Know what you're looking at</h2><p class="sub">Names in quotes are what the team calls them. “Likely” means matched by picture and description.</p></div>
+    <div id="atkgroups"></div>
+  </section>
+
+  <section id="words" aria-labelledby="words-h">
+    <div class="phead"><div class="label">Team language</div><h2 id="words-h">Words you'll hear</h2></div>
+    <div class="gloss" id="gloss"></div>
+  </section>
+
+  <section id="rewards" aria-labelledby="rew-h">
+    <div class="phead"><div class="label">Why we run it</div><h2 id="rew-h">Rewards</h2></div>
+    <div class="grid2">
+      <div class="card">
+        <div class="label">Drops (break Darknell's Treasure Chest)</div>
+        <ul>
+          <li><b>Commanding Force Earring</b> (Mythic): Max HP/MP 1,500, Crit DMG 5%. Part of the Pitched Boss Set.</li>
+          <li><b>Primal Essence</b>, also needed (×20) for the Black Mage Genesis Badge</li>
+          <li>Darknell Soul Shard (10 = 1 Soul)</li>
+          <li>One of: Arachno, Necros, Phantasma or Shardveil Coin</li>
+          <li>Bonus Mystical Cube, Chaos Crystal Piece</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="label">Clear achievements</div>
+        <ul>
+          <li>1 clear: Commanding Force Earring</li>
+          <li>5 clears: 10 Soul Shards</li>
+          <li>7 clears: 20 Soul Shards</li>
+          <li>10 clears: another Commanding Force Earring</li>
+          <li>Cygnus's Mission (1 clear): Exalt Fail Count Reduction Scroll (50%)</li>
+        </ul>
+      </div>
+    </div>
+    <figure style="max-width:420px"><button type="button" class="zoom sprite" data-src="img/darknell/4f8035f4.jpg" data-cap="Darknell's Treasure Chest"><img src="img/darknell/4f8035f4.jpg" alt="Darknell's Treasure Chest" loading="lazy"></button><figcaption>Darknell's Treasure Chest</figcaption></figure>
+  </section>
+
+  <p class="foot"><b>BeyondReach</b> · compiled by Faye · internal use only.<br>Official pictures and attack details from Nexon's <a href="https://forum.nexon.com/MapleStoryMGlobal/board_view?board=2690&amp;thread=3312258" target="_blank" rel="noopener">12.17/18 Patch Notes</a>. Run plan, sequence notes and screenshots from BR.</p>
+</main>
+
+<dialog id="lb" aria-label="Enlarged picture"><button type="button" id="lb-x" aria-label="Close">×</button><img id="lb-img" alt=""><p id="lb-cap"></p></dialog>
+
+<script>
+const im=(f,cap)=>({f,cap});
+const fig=i=>`<figure><button type="button" class="zoom sprite" data-src="img/darknell/${i.f}" data-cap="${i.cap.replace(/"/g,"&quot;")}"><img src="img/darknell/${i.f}" alt="${i.cap.replace(/"/g,"&quot;")}" loading="lazy"></button>${i.cap?`<figcaption>${i.cap}</figcaption>`:""}</figure>`;
+
+const SEQ={
+ P1:[["9:56 · origin (all but slot 5 support)","ori"],["9:44 · dash to corner → stun","stun"],["9:10 · everyone fly up","fly"],["Rest: don't care, self react","rep"]],
+ P2:["Buff","Big hit","Knockback","Dash","Meteor","Dive","Buff","Dash","Knockback","Big hit","Meteor","Dive","(Repeat)"],
+ P3:["Meteor","Knockback","Dash","Dive","Buff","Big hit","Meteor","Knockback","Dash","Buff","Dive","(Repeat)"],
+ P4:["Meteor","Buff","Knockback","Dash","Big hit","Dive","Meteor","Knockback","Buff","Big hit","Dash (wait 2 sec)","Dive","(Repeat)"]
+};
+const cls=m=>m==="(Repeat)"?"rep":m.startsWith("Meteor")?"meteor":m.startsWith("Dive")?"fly":"plain";
+const hint=m=>m.startsWith("Meteor")?"<small>blockers</small>":m.startsWith("Dive")?"<small>fly up</small>":"";
+document.getElementById("seqgrid").innerHTML=Object.entries(SEQ).map(([p,l])=>`<div class="seqcol"><h3>${p}</h3><div class="mv" style="background:var(--danger);color:#fff"><span>⚠ Watch the blue ball</span></div>${l.map(m=>Array.isArray(m)?`<div class="mv ${m[1]==="rep"?"rep":m[1]}">${m[0]}</div>`:`<div class="mv ${cls(m)}"><span>${m}</span>${hint(m)}</div>`).join("")}</div>`).join("");
+
+const A=[
+ {g:"danger",h:"Dodge these: they're what kills the main team",items:[
+  {n:"Pillar of Light",aka:"“light beam”",ph:"All phases",what:"Pillars of light appear all over the map. First a <b>narrow</b> beam shows up as a warning. It's still safe. About <b>1 sec later</b> it turns into a <b>fat</b> beam that hurts.",todo:"Move when you see the narrow one. Step out of the pillar, but not past the 3-person space.",img:[im("u-beam-narrow.jpg","1. Narrow beam (arrows): warning, still safe"),im("u-beam-fat.jpg","2. One sec later: fat beam, this one hurts"),im("9b75f72b.jpg","Official picture")]},
+  {n:"Blue ball",aka:"Mad Mage · Summon Sphere (likely)",ph:"All 4 phases",what:"A blue sphere that travels along the map and keeps damaging everything around it. One of the main things that kills you, in every phase. Three situations: it comes from your right corner, from your left corner, or it goes all the way to the left corner where the pin is.",todo:"Teleport through it, use a 1-sec i-frame, jump up, or fly up. Practice it solo until dodging is muscle memory.",img:[im("u-blueball.jpg","The blue ball coming at the team in the left corner"),im("1a469fe6.jpg","Official picture: Mad Mage summoning the sphere")]},
+  {n:"Teleport – Ground Slam",aka:"“dive”",ph:"All phases",what:"He teleports to a random party member and slams the ground with a knockback.",todo:"Fly up. If he teleports to the lure, the lure flies to the left corner. Type 1: don't chase him.",img:[im("ade40f6b.jpg","Teleport – Ground Slam")]}
+ ]},
+ {g:"meteor",h:"Blockers handle these",items:[
+  {n:"Summon Meteors",aka:"“meteor”",ph:"All phases",what:"Meteors spaced apart fly down slowly.",todo:"Blocker 1 and 2 take turns. The 3rd DPS covers any that slip through.",img:[im("98392ee5.jpg","Summon Meteors")]}
+ ]},
+ {g:"plain",h:"Darknell's other moves",items:[
+  {n:"Enhanced ATK",aka:"“buff”",ph:"All phases",what:"A buff that powers up his attacks for a while.",todo:"Be extra careful until it ends.",img:[im("811ca93c.jpg","Enhanced ATK")]},
+  {n:"Forward Charge",aka:"“dash”",ph:"All phases",what:"Charges forward, hitting everyone in his path with a knockback. At 9:44 he dashes to the corner.",todo:"Stun call at 9:44. In P4, wait 2 sec after the dash before the dive.",img:[im("08d52238.jpg","Forward Charge")]},
+  {n:"Forward Swing",aka:"likely “knockback”",ph:"All phases",what:"Swings a huge blade from back to front with a special knockback.",todo:"Expect to get pushed. Get back into position fast.",img:[im("fe49bd50.jpg","Forward Swing")]},
+  {n:"Ultimate Sword Energy",aka:"likely “big hit”",ph:"Phase 2+",what:"Sends a large shockwave forward with a knockback.",todo:"Watch your HP. Get back into position after the push.",img:[im("e45e9b8e.jpg","Ultimate Sword Energy")]}
+ ]},
+ {g:"elite",h:"Elites and adds: the lure's problem (unless you stand too far out)",items:[
+  {n:"Corrupted Warrior",ph:"All phases",what:"Summoned all over the map. Uses skills, then self-destructs and damages the area around it.",todo:"Don't stand next to it when it blows up.",img:[im("79fe9665.jpg","Corrupted Warrior")]},
+  {n:"Vicious Hunter · Sniping",ph:"All phases",what:"A sniping arrow that pierces through players.",todo:"Lure: move off its line.",img:[im("3d1f5ec5.jpg","Sniping")]},
+  {n:"Vicious Hunter · Summon Chains",aka:"“blue cloud”",ph:"Phase 4+",what:"Blue chains that hit a large area.",todo:"Lure: get out of the blue cloud.",img:[im("4467ece2.jpg","Summon Chains")]},
+  {n:"Mad Mage · Summon Trap",ph:"Phase 4+",what:"A trap that gives a debuff, then explodes.",todo:"Lure: don't step on it.",img:[im("8ec0c8a5.jpg","Summon Trap")]},
+  {n:"Black Knight · Raging Blow",ph:"Phase 2+",stun:true,what:"Hits forward and stuns.",todo:"Lure: i-frame or get out of the way.",img:[im("d38d2074.jpg","Raging Blow")]},
+  {n:"Black Knight · Summon Chains",ph:"Phase 2+",what:"Chains that hit a large area.",todo:"Lure: get out of the area.",img:[im("c14ee96c.jpg","Summon Chains")]},
+  {n:"Rampant Cyborg · Final Cut",ph:"Phase 3+",stun:true,what:"Hits forward and stuns.",todo:"Lure: i-frame or get out of the way.",img:[im("d32e0f7b.jpg","Final Cut")]},
+  {n:"Rampant Cyborg · Phantom Blow",ph:"Phase 3+",stun:true,what:"Hits forward and stuns.",todo:"Lure: i-frame or get out of the way.",img:[im("009c9fe6.jpg","Phantom Blow")]},
+  {n:"Bad Brawler · Brain Scrambler",ph:"Phase 2+",what:"A headshot on a nearby player.",todo:"Lure: keep moving.",img:[im("6b2fbfba.jpg","Brain Scrambler")]},
+  {n:"Bad Brawler · Octopunch",ph:"Phase 2+",stun:true,what:"Punches forward and stuns.",todo:"Lure: i-frame or get out of the way.",img:[im("153cbbb9.jpg","Octopunch")]}
+ ]}
+];
+document.getElementById("atkgroups").innerHTML=A.map(g=>`<div class="group"><div class="gh ${g.g}">${g.h}</div><div class="atks">${g.items.map(a=>`<article class="atk ${g.g==="danger"?"danger":""}"><div class="an">${a.n} <span class="tag ph">${a.ph}</span>${a.stun?'<span class="tag stun">Stun</span>':""}</div>${a.aka?`<div class="aka">Team calls it: ${a.aka}</div>`:""}<div>${a.img.map(fig).join("")}</div><p>${a.what}</p><p class="do"><b>Do:</b> ${a.todo}</p></article>`).join("")}</div></div>`).join("");
+
+const G=[
+ ["Pin","Holds Darknell in place. The main team hits from the left."],
+ ["Blocker 1 / 2","Take turns blocking meteors."],
+ ["Lure","Pulls the elites to the right side, away from the team."],
+ ["Elites","Vicious Hunter, Mad Mage, Black Knight, Rampant Cyborg, Bad Brawler. More join each phase."],
+ ["Tuck in","Stay inside the 3-person space on the left."],
+ ["Dive","Teleport – Ground Slam. Fly up."],
+ ["Dash","Forward Charge."],
+ ["Buff","Enhanced ATK."],
+ ["Meteor","Summon Meteors. Blockers' job."],
+ ["Light beam","Pillar of Light."],
+ ["Big hit","Likely Ultimate Sword Energy (P2+)."],
+ ["Knockback","Likely Forward Swing."],
+ ["Ori / origin","HEXA Origin skill. Team cooldown is 4 min."],
+ ["Slot 5 support","The 5th slot support position: Sia or bsp. Holds origin at 9:56 for the 8:08."],
+ ["8:08","The slot 5 support's origin on the first dive after their stun is back. A name, not a fixed time. They origin again around 4:08."],
+ ["Blue ball","Mad Mage's sphere (likely). Deadly in all 4 phases."],
+ ["Blue cloud","Vicious Hunter's Summon Chains. The lure dodges it."],
+ ["Chain stun","Count 8 sec after a team origin, then stun so he stays down."],
+ ["Type 1 / Type 2","Type 1: LK/Faye team, basic calls, harder. Type 2: Dro-commanded, full calls, easier."]
+];
+document.getElementById("gloss").innerHTML=G.map(([t,d])=>`<div class="term"><b>${t}</b><span>${d}</span></div>`).join("");
+
+const lb=document.getElementById("lb"),lbi=document.getElementById("lb-img"),lbc=document.getElementById("lb-cap");
+document.addEventListener("click",e=>{const z=e.target.closest(".zoom");if(z){lbi.src=z.dataset.src;lbi.alt=z.dataset.cap;lbc.textContent=z.dataset.cap;try{lb.showModal()}catch(_){}}});
+document.getElementById("lb-x").onclick=()=>lb.close();
+lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
+</script>
+
+</body></html>
