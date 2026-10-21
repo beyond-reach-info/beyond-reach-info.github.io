@@ -1,0 +1,435 @@
+<!doctype html><html lang="zh-Hans"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Darknell 攻略</title>
+<link rel="stylesheet" href="translation.css">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;700;900&display=swap">
+<style>
+/* Layout: one reading column with sticky tabs. Run setup (types, roles, opening minute, where to stand, lure) first, then the sequence, then every attack with its picture */
+:root{
+  --bg:#f4f2f5; --surface:#ffffff; --fg:#1e1a22; --muted:#605a68; --line:#e0dbe4;
+  --danger:#c0362c; --danger-bg:#fdecea;
+  --fly:#8a6a00; --fly-bg:#fff3bf;
+  --meteor:#b4233f; --meteor-bg:#fbe7ec;
+  --ok:#5a3d8f; --ok-bg:#eee8f7; --ok-fg:#3b2668;
+  --neutral-bg:#ecebef; --neutral-fg:#46424d;
+  --ori:#0f7c78; --ori-bg:#e0f3f1;
+  --stun:#b45309; --stun-bg:#fdf0dd;
+  --sprite-bg:#ffffff;
+  --accent:#a0234a;
+  --display:"Marcellus","Noto Sans SC","PingFang SC","Microsoft YaHei",serif;
+  --body:"Nunito Sans","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15121a; --surface:#1f1a25; --fg:#eeebf2; --muted:#aaa3b5; --line:#322b3b;
+  --danger:#f08a7f; --danger-bg:#3a1c1a; --fly:#f2d16b; --fly-bg:#3a3110;
+  --meteor:#f28aa0; --meteor-bg:#3b1a24; --ok:#b9a0ee; --ok-bg:#271e3a; --ok-fg:#d8cbf7;
+  --neutral-bg:#2b2633; --neutral-fg:#cbc6d4; --ori:#5fd1c9; --ori-bg:#143230;
+  --stun:#f2a656; --stun-bg:#3a2810; --sprite-bg:#f4f3f8; --accent:#f07ca0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15121a; --surface:#1f1a25; --fg:#eeebf2; --muted:#aaa3b5; --line:#322b3b;
+  --danger:#f08a7f; --danger-bg:#3a1c1a; --fly:#f2d16b; --fly-bg:#3a3110;
+  --meteor:#f28aa0; --meteor-bg:#3b1a24; --ok:#b9a0ee; --ok-bg:#271e3a; --ok-fg:#d8cbf7;
+  --neutral-bg:#2b2633; --neutral-fg:#cbc6d4; --ori:#5fd1c9; --ori-bg:#143230;
+  --stun:#f2a656; --stun-bg:#3a2810; --sprite-bg:#f4f3f8; --accent:#f07ca0; color-scheme:dark}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:940px;margin:0 auto;padding-block:24px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:30px}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
+h1{font-size:2rem;line-height:1.15}
+h2{font-size:1.55rem}
+h3{font-size:1.15rem}
+p{margin:0}
+ul,ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--muted)}
+.sub{color:var(--muted)}
+
+.guild{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.guild-name{font-family:var(--display);font-size:1.15rem;letter-spacing:.04em;color:var(--accent)}
+.guild-tag{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--danger);border:1px solid var(--danger);border-radius:999px;padding:2px 8px}
+.byline{margin-top:6px;font-weight:700}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.85rem}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:8px;border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto}
+nav a{flex:none;text-decoration:none;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:800;font-size:.88rem}
+nav a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+section{scroll-margin-top:64px;display:flex;flex-direction:column;gap:14px}
+.phead{display:flex;flex-direction:column;gap:4px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chip{display:inline-block;align-self:flex-start;border-radius:6px;padding:2px 10px;font-weight:800;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+.chip.hard{background:var(--danger-bg);color:var(--danger)}
+.chip.easy{background:var(--ori-bg);color:var(--ori)}
+.warnbox{background:var(--danger-bg);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.warnbox strong{color:var(--danger);font-size:1.02rem}
+
+/* roles */
+.roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.role{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.role b{font-size:1rem}
+.role span{color:var(--muted);font-size:.88rem}
+.role .n{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+
+/* timeline */
+.tl{display:flex;flex-direction:column;gap:6px}
+.step{display:grid;grid-template-columns:100px minmax(0,1fr);gap:10px;align-items:center}
+.when{font-weight:800;font-variant-numeric:tabular-nums;font-size:.9rem}
+.what{border-radius:8px;padding:6px 10px;font-weight:700;font-size:.9rem;min-width:0}
+.what.ori{background:var(--ori-bg);color:var(--ori)}
+.what.stun{background:var(--stun-bg);color:var(--stun)}
+.what.fly{background:var(--fly-bg);color:var(--fly)}
+.what.hit{background:var(--neutral-bg);color:var(--neutral-fg)}
+.what.warn{background:var(--danger-bg);color:var(--danger)}
+
+/* sequence */
+.seqgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.seqcol{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.seqcol h3{font-family:var(--body);font-weight:800;font-size:1rem;color:var(--accent)}
+.mv{border-radius:7px;padding:4px 8px;font-weight:800;font-size:.86rem;display:flex;justify-content:space-between;gap:6px}
+.mv small{font-weight:600;opacity:.85}
+.mv.meteor{background:var(--meteor-bg);color:var(--meteor)}
+.mv.fly{background:var(--fly-bg);color:var(--fly)}
+.mv.plain{background:var(--neutral-bg);color:var(--neutral-fg)}
+.mv.rep{border:1px dashed var(--line);color:var(--muted);font-weight:600}
+.mv.ori{background:var(--ori-bg);color:var(--ori)}
+.mv.stun{background:var(--stun-bg);color:var(--stun)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.82rem;color:var(--muted)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+
+/* figures */
+figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+figcaption{font-size:.82rem;color:var(--muted)}
+.zoom{all:unset;cursor:zoom-in;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.zoom img{display:block;width:100%;height:auto}
+.zoom.sprite{background:var(--sprite-bg)}
+.zoom.sprite img{max-height:200px;object-fit:contain;padding:6px;box-sizing:border-box}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+
+/* attacks */
+.group{display:flex;flex-direction:column;gap:10px}
+.gh{font-weight:800;font-size:.95rem}
+.gh.danger{color:var(--danger)} .gh.meteor{color:var(--meteor)} .gh.elite{color:var(--ok-fg)} .gh.plain{color:var(--muted)}
+.atks{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.atk{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.atk.danger{border-color:var(--danger)}
+.an{font-weight:800;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.aka{font-size:.8rem;color:var(--muted);font-weight:600}
+.atk p{font-size:.88rem}
+.atk .do b{color:var(--accent)}
+.tag{display:inline-flex;border-radius:999px;padding:1px 9px;font-size:.72rem;font-weight:800;white-space:nowrap;background:var(--neutral-bg);color:var(--neutral-fg)}
+.tag.ph{background:var(--ok-bg);color:var(--ok-fg)}
+.tag.stun{background:var(--stun-bg);color:var(--stun)}
+
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.term{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.term b{display:block}
+.term span{color:var(--muted);font-size:.88rem}
+.foot{color:var(--muted);font-size:.85rem}
+.foot a{color:var(--accent)}
+
+dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1100px)}
+dialog::backdrop{background:rgba(10,8,16,.85)}
+dialog img{display:block;max-width:100%;max-height:82vh;border-radius:10px;background:#fff}
+dialog p{color:#fff;margin-top:8px;font-size:.9rem}
+dialog button{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;border:0;border-radius:999px;width:36px;height:36px;font-size:1.2rem;cursor:pointer}
+
+@media (max-width:760px){.seqgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.grid2{grid-template-columns:1fr}.step{grid-template-columns:78px minmax(0,1fr)}h1{font-size:1.7rem}}
+</style>
+
+<main class="wrap" lang="zh-Hans">
+  <a href="./#bosses" style="color:var(--accent);font-weight:800;align-self:flex-start;min-height:44px;display:inline-flex;align-items:center">&larr; Info &amp; Boss guides</a>
+  <header>
+    <div class="guild"><span class="guild-name">BeyondReach</span><span class="guild-tag">仅限公会内部</span><div class="translation-actions" role="group" aria-label="Guide language"><a class="translate-link" href="darknell.html" lang="en" hreflang="en" translate="no">English</a><a class="translate-link" href="darknell-th.html" lang="th" hreflang="th" translate="no">ไทย</a><a class="translate-link" href="darknell-zh.html" lang="zh-Hans" hreflang="zh-Hans" translate="no" aria-current="page">中文</a></div></div>
+    <div class="label">MapleStory M · 公会 Boss 攻略</div>
+    <h1>Darknell 攻略</h1>
+    <p class="byline">整理：Faye · 更新于 2026 年 10 月 21 日</p>
+    <p class="sub">仅供参考。内容不一定完全准确，会持续更新。点击任意图片可放大。</p>
+    <div class="facts">
+      <span class="fact"><b>Lv. 250+</b></span>
+      <span class="fact">公会每队 <b>6</b> 人（最多 10 人）</span>
+      <span class="fact"><b>10 分钟</b></span>
+      <span class="fact">每周 <b>1 次</b>（周四午夜重置）</span>
+      <span class="fact">全队共 <b>10 次</b>复活</span>
+      <span class="fact">建议 <b>无视防御 70%</b>、<b>ARC 880</b></span>
+    </div>
+  </header>
+
+  <div class="warnbox" style="background:var(--ok-bg)">
+    <strong style="color:var(--ok-fg);font-size:1.2rem">核心（Node）：除了 Pin 和有经验的 DPS，其他人都要用 Withstand 2。</strong>
+    <p><b>其余所有人统一使用 Withstand 2，这是我们的标准。</b></p>
+  </div>
+
+  <div class="warnbox">
+    <strong>单下打不死你，连招才会。</strong>
+    <p>Boss 的单次攻击不会把你打死。真正致命的是<b>连招死亡</b>：同时被两样东西打中，比如光柱加蓝球，或者冲刺正好撞进陨石。躲的时候注意别同时被两样打到。</p>
+  </div>
+
+  <nav aria-label="Sections">
+    <a href="#runs">车队类型</a>
+    <a href="#roles">分工</a>
+    <a href="#opening">开局</a>
+    <a href="#stand">站位</a>
+    <a href="#lure">Lure</a>
+    <a href="#sequence">技能顺序</a>
+    <a href="#attacks">技能图鉴</a>
+    <a href="#words">术语</a>
+    <a href="#rewards">奖励</a>
+  </nav>
+
+  <section id="runs" aria-labelledby="runs-h">
+    <div class="phead"><div class="label">选择车队</div><h2 id="runs-h">两种公会车</h2><p class="sub">两种车需要的熟练度不同。建议先从 Type 2 开始。</p></div>
+    <div class="grid2">
+      <div class="card">
+        <span class="chip hard">Type 1 · 较难</span>
+        <h3>LK/Faye 队</h3>
+        <ul>
+          <li>LK 当 Pin，Faye 用 Sia 当辅助</li>
+          <li>没有详细指挥，只喊基本指令</li>
+          <li>你要清楚自己的职责和大致顺序。不用背下每一步，我们会看情况应变。</li>
+          <li>如果 Darknell 跳砸时瞬移走了，只能算运气不好。主队继续输出，等他回来。<b>不要追他。</b></li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="chip easy">Type 2 · 较简单</span>
+        <h3>Dro 指挥</h3>
+        <ul>
+          <li>Dro 当 Pin，并详细喊出全部顺序</li>
+          <li>配一个 bsp 辅助</li>
+          <li>容错更高，适合学习</li>
+          <li>跳砸时会喊 Lure 什么时候飞到左边角落</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="roles" aria-labelledby="roles-h">
+    <div class="phead"><div class="label">每队六人</div><h2 id="roles-h">谁做什么</h2></div>
+    <div class="roles">
+      <div class="role"><span class="n">1</span><b>Pin</b><span>把 Darknell 定在固定位置让大家打。</span></div>
+      <div class="role"><span class="n">2</span><b>Blocker 1</b><span>挡陨石，和 Blocker 2 轮流。</span></div>
+      <div class="role"><span class="n">3</span><b>Blocker 2</b><span>挡陨石，和 Blocker 1 轮流。</span></div>
+      <div class="role"><span class="n">4</span><b>第三 DPS（补位）</b><span>补挡 Blocker 漏掉的陨石，比如技能还在冷却或时机不对的时候。</span></div>
+      <div class="role"><span class="n">5</span><b>5 号位辅助</b><span>Sia 或 bsp，即“第 5 号辅助位”。单独时间开 origin 做另一次晕（叫“8:08”，但不是固定时间），之后约 4:08 再开一次。团队 origin 后也负责接晕。</span></div>
+      <div class="role"><span class="n">6</span><b>Lure</b><span>把精英怪引到右边，让它们别来找主队。看起来像混经验的位置，其实很难活。</span></div>
+    </div>
+  </section>
+
+  <section id="opening" aria-labelledby="opening-h">
+    <div class="phead"><div class="label">流程</div><h2 id="opening-h">第一分钟和 origin 时间</h2><p class="sub">计时从 10:00 开始倒数。</p></div>
+    <div class="card">
+      <div class="label">活过第一分钟</div>
+      <div class="tl">
+        <div class="step"><div class="when">9:56</div><div class="what ori">除了 5 号位辅助（Sia 或 bsp），所有人开 origin；5 号位留到 8:08</div></div>
+        <div class="step"><div class="when">9:44</div><div class="what stun">他冲到角落 → 晕</div></div>
+        <div class="step"><div class="when">9:10</div><div class="what fly">固定：所有人飞起来（跳砸）</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">之后</div>
+      <div class="tl">
+        <div class="step"><div class="when">~8:26</div><div class="what hit">晕用的 origin 再次可用（9:56 减去 1.5 分钟晕的冷却）</div></div>
+        <div class="step"><div class="when">“8:08”</div><div class="what stun">5 号位辅助开 origin。再等几个技能，到跳砸时开 origin 晕住，取消那次跳砸。</div></div>
+        <div class="step"><div class="when">+0.5–1 min</div><div class="what warn">Lure 去地图右边</div></div>
+        <div class="step"><div class="when">~5 min</div><div class="what ori">听指挥全队一起开 origin（±10 秒，配合跳砸或好的晕点）</div></div>
+        <div class="step"><div class="when">~4:08</div><div class="what stun">5 号位辅助再开一次 origin（在他 8:08 之后 4 分钟，所以跟着 8:08 变动）</div></div>
+        <div class="step"><div class="when">~1 min</div><div class="what ori">听指挥全队一起开 origin</div></div>
+      </div>
+      <div class="warnbox"><strong>8:08 不是固定时间</strong><p>这只是我们的叫法。真正的时机是晕的 origin 好了之后的第一次跳砸（约 8:26 以后），所以会因每场情况差 ±5 秒甚至更多。约 4:08 也一样。等跳砸、听指挥，不要看时钟。</p></div>
+      <ul>
+        <li>Origin 冷却 <b>4 分钟</b>，晕的冷却 <b>1.5 分钟</b>。</li>
+        <li><b>接晕：</b>每次团队 origin 后，由一个人（通常是 5 号位辅助）数 <b>8 秒</b>再放晕。实际是 10 秒，但手慢的话 Darknell 会在接上之前醒来。</li>
+        <li>开局之后，等指挥喊再一起开 origin。听指挥。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="label">血条上的阶段标记</div>
+      <figure><button type="button" class="zoom" data-src="img/darknell/u-hp-stages.jpg" data-cap="血条分成 4 段，第 1 段从右边开始。"><img src="img/darknell/u-hp-stages.jpg" alt="Darknell 血条，标有 1 到 4 段"></button><figcaption>血条分成 4 段，从右边开始。后面的阶段会加入新的精英怪（见技能图鉴）。</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="stand" aria-labelledby="stand-h">
+    <div class="phead"><div class="label">请看两遍</div><h2 id="stand-h">主队站哪里</h2></div>
+    <div class="warnbox">
+      <strong>左边只有 3 个人的位置。绝对不能站第 4 个位置或更远。</strong>
+      <p>大部分 DPS 前 3–4 场都站得太外面，以为第 4 个位置安全。其实不安全，这是一个很严格、很窄的区域。</p>
+      <p>如果精英怪看到你跑来左边，所有人都可能死，包括 Pin。就算你飞起来躲过了，别人也会死，Pin 死光，这场失败要重打。</p>
+      <p>如果要躲危险，不要只往右挪一点点。往右走远一点也可以。</p>
+    </div>
+    <div class="figs">
+      <figure><button type="button" class="zoom" data-src="img/darknell/u-lure-range-marked.jpg" data-cap="1、2、3 号位是主队的位置。第 4 号位及更右边一律不行。"><img src="img/darknell/u-lure-range-marked.jpg" alt="Darknell 地图，1、2、3 号位安全，第 4 号位不行" loading="lazy"></button><figcaption>1、2、3 号位是主队的位置。第 4 号位及更右边（黄色 X）一律不行。</figcaption></figure>
+    </div>
+    <div class="card">
+      <div class="label">你要躲的东西</div>
+      <ul>
+        <li><b>光柱</b>（Pillar of Light）：先出现细光柱作为预警，这时还安全。大约 1 秒后变成粗光柱，会伤人。看到细的就要移动。</li>
+        <li><b>蓝球</b>：最主要的死因之一，4 个阶段都有。图片在下面。</li>
+        <li><b>跳砸</b>：他飞起来砸地。飞起来就能躲。</li>
+        <li><b>陨石</b>交给 Blocker。站好位置继续打。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="lure" aria-labelledby="lure-h">
+    <div class="phead"><div class="label">职责说明</div><h2 id="lure-h">怎么当 Lure</h2></div>
+    <div class="card">
+      <div class="label">Lure 要躲的东西</div>
+      <ul>
+        <li><b>蓝云</b>：Vicious Hunter 的锁链召唤，一大片蓝色区域。要离开。</li>
+        <li><b>精英怪的攻击</b>：狙击、晕和锁链（技能图鉴里都有图）。</li>
+        <li>另外和大家一样要躲光柱、蓝球和跳砸。</li>
+      </ul>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="label">你的任务</div>
+        <ul>
+          <li>8:08 origin 之后大约 0.5–1 分钟，去<b>右边</b>把精英怪引走。其他人缩在左边。</li>
+          <li>跳砸时 Darknell 会随机瞬移到某个玩家身边。如果是你，飞到左边角落和大家在一起。Type 2 时 Dro 会喊。</li>
+          <li>在约 5 分钟和约 1 分钟的团队 origin 时，听指挥跳到左边和大家一起开，然后跳回去继续引怪。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="label">保命</div>
+        <ul>
+          <li>活着最重要。用无敌技能，左右走、冲、瞬移，能飞就飞。</li>
+          <li>跳砸时机没对上也没关系，比如跳砸来的时候飞行还在冷却。活下来就好。</li>
+          <li>怕的话，飞行一好就飞。</li>
+          <li>想打点伤害？最多只能到地图<b>中间</b>，绝对不能过中线。在那里打不到就别打。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warnbox">
+      <strong>如果 Lure 死了</strong>
+      <p>要有一个 DPS 离开去接手 Lure。左边少一个人输出，速度变慢，可能会失败。</p>
+    </div>
+  </section>
+
+  <section id="sequence" aria-labelledby="seq-h">
+    <div class="phead"><div class="label">技能顺序笔记 · BR</div><h2 id="seq-h">各阶段技能顺序</h2><p class="sub">每个阶段按列表循环。P1 不用管。</p></div>
+    <div class="legend"><span><i class="sw" style="background:var(--meteor)"></i>陨石：Blocker</span><span><i class="sw" style="background:var(--fly)"></i>跳砸：飞起来</span><span><i class="sw" style="background:var(--neutral-fg)"></i>其他</span></div>
+    <div class="seqgrid" id="seqgrid"></div>
+    <div class="warnbox"><strong>每个阶段都要注意蓝球</strong><p>蓝球 4 个阶段都会出现，是最主要的灭团原因之一。除了看顺序，整场都要盯着它。图片见技能图鉴。</p></div>
+  </section>
+
+  <section id="attacks" aria-labelledby="atk-h">
+    <div class="phead"><div class="label">全部技能（附图）</div><h2 id="atk-h">认清你看到的是什么</h2><p class="sub">引号里是队里的叫法。“可能”表示是根据图片和描述对应的。</p></div>
+    <div id="atkgroups"></div>
+  </section>
+
+  <section id="words" aria-labelledby="words-h">
+    <div class="phead"><div class="label">队内用语</div><h2 id="words-h">你会听到的词</h2></div>
+    <div class="gloss" id="gloss"></div>
+  </section>
+
+  <section id="rewards" aria-labelledby="rew-h">
+    <div class="phead"><div class="label">为什么要打</div><h2 id="rew-h">奖励</h2></div>
+    <div class="grid2">
+      <div class="card">
+        <div class="label">掉落（打破 Darknell 的宝箱）</div>
+        <ul>
+          <li><b>Commanding Force Earring</b>（神话）：最大 HP/MP 1,500，暴击伤害 5%。属于 Pitched Boss 套装。</li>
+          <li><b>Primal Essence</b>，黑魔法师的 Genesis Badge 也需要（×20）</li>
+          <li>Darknell 灵魂碎片（10 个 = 1 个灵魂）</li>
+          <li>以下硬币之一：Arachno、Necros、Phantasma 或 Shardveil Coin</li>
+          <li>Bonus Mystical Cube、Chaos Crystal Piece</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="label">通关成就</div>
+        <ul>
+          <li>通关 1 次：Commanding Force Earring</li>
+          <li>通关 5 次：10 个灵魂碎片</li>
+          <li>通关 7 次：20 个灵魂碎片</li>
+          <li>通关 10 次：再一个 Commanding Force Earring</li>
+          <li>Cygnus 任务（通关 1 次）：Exalt Fail Count Reduction Scroll（50%）</li>
+        </ul>
+      </div>
+    </div>
+    <figure style="max-width:420px"><button type="button" class="zoom sprite" data-src="img/darknell/4f8035f4.jpg" data-cap="Darknell 的宝箱"><img src="img/darknell/4f8035f4.jpg" alt="Darknell 的宝箱" loading="lazy"></button><figcaption>Darknell 的宝箱</figcaption></figure>
+  </section>
+
+  <p class="foot"><b>BeyondReach</b> · Faye 整理 · 仅限公会内部。<br>官方图片和技能资料来自 Nexon 的 <a href="https://forum.nexon.com/MapleStoryMGlobal/board_view?board=2690&amp;thread=3312258" target="_blank" rel="noopener">12.17/18 更新公告</a>。打法、顺序笔记和截图来自 BR。</p>
+</main>
+
+<dialog id="lb" aria-label="放大图片"><button type="button" id="lb-x" aria-label="关闭">×</button><img id="lb-img" alt=""><p id="lb-cap"></p></dialog>
+
+<script>
+const im=(f,cap)=>({f,cap});
+const fig=i=>`<figure><button type="button" class="zoom sprite" data-src="img/darknell/${i.f}" data-cap="${i.cap.replace(/"/g,"&quot;")}"><img src="img/darknell/${i.f}" alt="${i.cap.replace(/"/g,"&quot;")}" loading="lazy"></button>${i.cap?`<figcaption>${i.cap}</figcaption>`:""}</figure>`;
+
+const SEQ={
+ P1:[["9:56 · origin（5 号位辅助除外）","ori"],["9:44 · 冲到角落 → 晕","stun"],["9:10 · 所有人飞起来","fly"],["其余：不用管，自己反应","rep"]],
+ P2:["Buff","Big hit","Knockback","Dash","Meteor","Dive","Buff","Dash","Knockback","Big hit","Meteor","Dive","(Repeat)"],
+ P3:["Meteor","Knockback","Dash","Dive","Buff","Big hit","Meteor","Knockback","Dash","Buff","Dive","(Repeat)"],
+ P4:["Meteor","Buff","Knockback","Dash","Big hit","Dive","Meteor","Knockback","Buff","Big hit","Dash (wait 2 sec)","Dive","(Repeat)"]
+};
+const cls=m=>m==="(Repeat)"?"rep":m.startsWith("Meteor")?"meteor":m.startsWith("Dive")?"fly":"plain";
+const TR={"Buff": "加攻 Buff", "Big hit": "大招", "Knockback": "击退", "Dash": "冲刺", "Meteor": "陨石", "Dive": "跳砸", "(Repeat)": "（循环）", "Dash (wait 2 sec)": "冲刺（等 2 秒）"};
+const hint=m=>m.startsWith("Meteor")?"<small>Blocker</small>":m.startsWith("Dive")?"<small>飞起来</small>":"";
+document.getElementById("seqgrid").innerHTML=Object.entries(SEQ).map(([p,l])=>`<div class="seqcol"><h3>${p}</h3><div class="mv" style="background:var(--danger);color:#fff"><span>⚠ 注意蓝球</span></div>${l.map(m=>Array.isArray(m)?`<div class="mv ${m[1]==="rep"?"rep":m[1]}">${m[0]}</div>`:`<div class="mv ${cls(m)}"><span>${TR[m]||m}</span>${hint(m)}</div>`).join("")}</div>`).join("");
+
+const A=[
+ {g:"danger",h:"一定要躲：这些会杀死主队",items:[
+  {n:"Pillar of Light",aka:"“光柱”",ph:"全阶段",what:"地图各处会出现光柱。先出现<b>细光柱</b>作为预警，这时还安全。大约 <b>1 秒后</b>变成<b>粗光柱</b>，会伤人。",todo:"看到细的就移动。离开光柱，但不要走出 3 人区。",img:[im("u-beam-narrow.jpg","1. 细光柱（箭头）：预警，还安全"),im("u-beam-fat.jpg","2. 1 秒后：粗光柱，这个会伤人"),im("9b75f72b.jpg","官方图片")]},
+  {n:"蓝球",aka:"Mad Mage · 召唤球体（可能）",ph:"4 个阶段都有",what:"蓝色球体沿着地图移动，持续伤害周围所有人。每个阶段都是最主要的死因之一。三种情况：从你右边角落来、从你左边角落来，或者一路走到 Pin 所在的左边角落。",todo:"瞬移穿过、用 1 秒无敌、跳起来或飞起来。自己单刷练习，练到形成肌肉记忆。",img:[im("u-blueball.jpg","蓝球冲向左边角落的队伍"),im("1a469fe6.jpg","官方图片：Mad Mage 召唤球体")]},
+  {n:"Teleport – Ground Slam",aka:"“跳砸”",ph:"全阶段",what:"他瞬移到随机一名队员身边并砸地，附带击退。",todo:"飞起来。如果他瞬移到 Lure 那边，Lure 飞到左边角落。Type 1：不要追他。",img:[im("ade40f6b.jpg","Teleport – Ground Slam")]}
+ ]},
+ {g:"meteor",h:"交给 Blocker",items:[
+  {n:"Summon Meteors",aka:"“陨石”",ph:"全阶段",what:"间隔排开的陨石缓慢落下。",todo:"Blocker 1 和 2 轮流挡。漏掉的由第三 DPS 补。",img:[im("98392ee5.jpg","Summon Meteors")]}
+ ]},
+ {g:"plain",h:"Darknell 的其他技能",items:[
+  {n:"Enhanced ATK",aka:"“Buff”",ph:"全阶段",what:"一段时间内强化自身攻击的 Buff。",todo:"结束前要格外小心。",img:[im("811ca93c.jpg","Enhanced ATK")]},
+  {n:"Forward Charge",aka:"“冲刺”",ph:"全阶段",what:"向前冲锋，路径上的人都会被击中并击退。9:44 时他会冲到角落。",todo:"9:44 喊晕。P4 冲刺后等 2 秒才是跳砸。",img:[im("08d52238.jpg","Forward Charge")]},
+  {n:"Forward Swing",aka:"可能是“击退”",ph:"全阶段",what:"从后往前挥出巨大的刀，附带特殊击退。",todo:"会被推开，赶快回到位置。",img:[im("fe49bd50.jpg","Forward Swing")]},
+  {n:"Ultimate Sword Energy",aka:"可能是“大招”",ph:"P2 起",what:"向前发出巨大冲击波，附带击退。",todo:"注意血量，被推开后回到位置。",img:[im("e45e9b8e.jpg","Ultimate Sword Energy")]}
+ ]},
+ {g:"elite",h:"精英怪和小怪：Lure 负责（除非你站太外面）",items:[
+  {n:"Corrupted Warrior",ph:"全阶段",what:"在地图各处被召唤。会放技能，之后自爆伤害周围。",todo:"它自爆时不要站在旁边。",img:[im("79fe9665.jpg","Corrupted Warrior")]},
+  {n:"Vicious Hunter · Sniping",ph:"全阶段",what:"会穿透玩家的狙击箭。",todo:"Lure：离开它的射线。",img:[im("3d1f5ec5.jpg","Sniping")]},
+  {n:"Vicious Hunter · Summon Chains",aka:"“蓝云”",ph:"P4 起",what:"大范围的蓝色锁链。",todo:"Lure：离开蓝云。",img:[im("4467ece2.jpg","Summon Chains")]},
+  {n:"Mad Mage · Summon Trap",ph:"P4 起",what:"给你减益的陷阱，之后会爆炸。",todo:"Lure：不要踩。",img:[im("8ec0c8a5.jpg","Summon Trap")]},
+  {n:"Black Knight · Raging Blow",ph:"P2 起",stun:true,what:"向前攻击并晕人。",todo:"Lure：用无敌或躲开。",img:[im("d38d2074.jpg","Raging Blow")]},
+  {n:"Black Knight · Summon Chains",ph:"P2 起",what:"大范围的锁链。",todo:"Lure：离开范围。",img:[im("c14ee96c.jpg","Summon Chains")]},
+  {n:"Rampant Cyborg · Final Cut",ph:"P3 起",stun:true,what:"向前攻击并晕人。",todo:"Lure：用无敌或躲开。",img:[im("d32e0f7b.jpg","Final Cut")]},
+  {n:"Rampant Cyborg · Phantom Blow",ph:"P3 起",stun:true,what:"向前攻击并晕人。",todo:"Lure：用无敌或躲开。",img:[im("009c9fe6.jpg","Phantom Blow")]},
+  {n:"Bad Brawler · Brain Scrambler",ph:"P2 起",what:"对附近玩家爆头。",todo:"Lure：一直移动。",img:[im("6b2fbfba.jpg","Brain Scrambler")]},
+  {n:"Bad Brawler · Octopunch",ph:"P2 起",stun:true,what:"向前出拳并晕人。",todo:"Lure：用无敌或躲开。",img:[im("153cbbb9.jpg","Octopunch")]}
+ ]}
+];
+document.getElementById("atkgroups").innerHTML=A.map(g=>`<div class="group"><div class="gh ${g.g}">${g.h}</div><div class="atks">${g.items.map(a=>`<article class="atk ${g.g==="danger"?"danger":""}"><div class="an">${a.n} <span class="tag ph">${a.ph}</span>${a.stun?'<span class="tag stun">晕</span>':""}</div>${a.aka?`<div class="aka">队里叫：${a.aka}</div>`:""}<div>${a.img.map(fig).join("")}</div><p>${a.what}</p><p class="do"><b>做法：</b>${a.todo}</p></article>`).join("")}</div></div>`).join("");
+
+const G=[
+ ["Pin","把 Darknell 定住，主队在左边打。"],
+ ["Blocker 1 / 2","轮流挡陨石。"],
+ ["Lure","把精英怪引到右边，远离队伍。"],
+ ["精英怪 Elites","Vicious Hunter、Mad Mage、Black Knight、Rampant Cyborg、Bad Brawler。每个阶段会加入更多。"],
+ ["缩在一起 Tuck in","待在左边的 3 人区里。"],
+ ["跳砸 Dive","Teleport – Ground Slam。飞起来。"],
+ ["冲刺 Dash","Forward Charge。"],
+ ["Buff","Enhanced ATK。"],
+ ["陨石 Meteor","Summon Meteors，Blocker 负责。"],
+ ["光柱 Light beam","Pillar of Light。"],
+ ["大招 Big hit","可能是 Ultimate Sword Energy（P2 起）。"],
+ ["击退 Knockback","可能是 Forward Swing。"],
+ ["Ori / origin","HEXA Origin 技能，团队冷却 4 分钟。"],
+ ["5 号位辅助","第 5 号辅助位：Sia 或 bsp。9:56 不开 origin，留到 8:08。"],
+ ["8:08","5 号位辅助在晕好了之后第一次跳砸时开的 origin。只是叫法，不是固定时间。约 4:08 再开一次。"],
+ ["蓝球 Blue ball","Mad Mage 的球体（可能）。4 个阶段都致命。"],
+ ["蓝云 Blue cloud","Vicious Hunter 的锁链召唤，Lure 要躲。"],
+ ["接晕 Chain stun","团队 origin 后数 8 秒再晕，让他继续倒地。"],
+ ["Type 1 / Type 2","Type 1：LK/Faye 队，基本指挥，较难。Type 2：Dro 指挥，全程喊，较简单。"]
+];
+document.getElementById("gloss").innerHTML=G.map(([t,d])=>`<div class="term"><b>${t}</b><span>${d}</span></div>`).join("");
+
+const lb=document.getElementById("lb"),lbi=document.getElementById("lb-img"),lbc=document.getElementById("lb-cap");
+document.addEventListener("click",e=>{const z=e.target.closest(".zoom");if(z){lbi.src=z.dataset.src;lbi.alt=z.dataset.cap;lbc.textContent=z.dataset.cap;try{lb.showModal()}catch(_){}}});
+document.getElementById("lb-x").onclick=()=>lb.close();
+lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
+</script>
+
+</body></html>

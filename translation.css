@@ -9,6 +9,7 @@
   text-decoration:none;transition:border-color .18s;
 }
 .translate-link:hover{border-color:var(--accent)}
+.translate-link[aria-current="page"]{border-color:var(--accent);background:var(--fg);color:var(--bg)}
 .translate-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 .translate-link span{font-size:.75rem;white-space:nowrap}
 @media(max-width:480px){.translation-actions{margin-left:0}}
