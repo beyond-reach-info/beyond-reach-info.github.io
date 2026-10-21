@@ -33,6 +33,7 @@
     .boss-list{list-style:none;margin:0;padding:0}
     .boss-link{display:flex;flex-direction:column;gap:20px;padding:28px;background:var(--surface);border:1px solid var(--line);border-radius:14px;color:var(--fg);text-decoration:none;transition:border-color .18s,background-color .18s}
     .boss-link:hover{border-color:var(--accent);background:var(--accent-bg)}
+    .boss-art{display:block;width:100%;height:240px;object-fit:contain;border-radius:10px;background:#fff}
     .boss-top,.boss-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .status{font-size:.75rem;font-weight:800;color:var(--accent);background:var(--accent-bg);padding:4px 10px;border-radius:999px}
     .facts{display:flex;flex-wrap:wrap;gap:8px}
