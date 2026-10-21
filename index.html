@@ -1,456 +1,62 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Black Mage Cheat Sheet</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;600;700;800&display=swap">
-<style>
-/* Layout: one reading column with sticky tabs. Basics first (curses, shields, lives, words), then each phase = goal, party plan, community tips with screenshots, attack cards with pictures grouped Avoid / OK / Other */
-:root{
-  --bg:#f3f2f6; --surface:#ffffff; --fg:#1d1b26; --muted:#5d5a6b; --line:#dddbe5;
-  --avoid:#c0362c; --avoid-bg:#fdecea;
-  --ok:#5b3a9a; --ok-bg:#ece6f7; --ok-fg:#3a2370;
-  --white-c:#b7892a;
-  --neutral-bg:#ebeaf0; --neutral-fg:#45424f;
-  --ori:#0f7c78; --ori-bg:#e0f3f1;
-  --burst:#b45309; --burst-bg:#fdf0dd;
-  --sprite-bg:#ffffff;
-  --accent:#5b3a9a;
-  --display:"Marcellus",Georgia,"Times New Roman",serif;
-  --body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#14121b; --surface:#1d1a27; --fg:#ecebf3; --muted:#a6a2b8; --line:#2f2b3d;
-  --avoid:#f08a7f; --avoid-bg:#3a1c1a; --ok:#b39cf0; --ok-bg:#251d3a; --ok-fg:#d4c6f7;
-  --white-c:#e7c26a; --neutral-bg:#2a2736; --neutral-fg:#c9c6d6;
-  --ori:#5fd1c9; --ori-bg:#143230; --burst:#f2a656; --burst-bg:#3a2810;
-  --sprite-bg:#f4f3f8; --accent:#b39cf0; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#14121b; --surface:#1d1a27; --fg:#ecebf3; --muted:#a6a2b8; --line:#2f2b3d;
-  --avoid:#f08a7f; --avoid-bg:#3a1c1a; --ok:#b39cf0; --ok-bg:#251d3a; --ok-fg:#d4c6f7;
-  --white-c:#e7c26a; --neutral-bg:#2a2736; --neutral-fg:#c9c6d6;
-  --ori:#5fd1c9; --ori-bg:#143230; --burst:#f2a656; --burst-bg:#3a2810;
-  --sprite-bg:#f4f3f8; --accent:#b39cf0; color-scheme:dark}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
-.wrap{max-width:940px;margin:0 auto;padding-block:24px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:30px}
-h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
-h1{font-size:2rem;line-height:1.15}
-h2{font-size:1.55rem}
-h3{font-size:1.15rem}
-p{margin:0}
-ul,ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
-.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--muted)}
-.sub{color:var(--muted)}
-b.w{color:var(--avoid)} b.k{color:var(--ok)}
-
-/* header */
-.guild{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-.guild-name{font-family:var(--display);font-size:1.15rem;letter-spacing:.04em;color:var(--accent)}
-.guild-tag{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--avoid);border:1px solid var(--avoid);border-radius:999px;padding:2px 8px}
-.byline{margin-top:6px;font-weight:700}
-.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.fact{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.85rem}
-
-/* nav */
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:8px;border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto}
-nav a{flex:none;text-decoration:none;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:800;font-size:.88rem}
-nav a span{color:var(--muted);font-weight:600}
-nav a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-
-section{scroll-margin-top:64px;display:flex;flex-direction:column;gap:14px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
-
-/* rule */
-.rule{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.big{border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.big.avoid{background:var(--avoid-bg);color:var(--avoid)}
-.big.ok{background:var(--ok-bg);color:var(--ok-fg)}
-.big h3{font-family:var(--body);font-weight:800;font-size:1.1rem;display:flex;align-items:center;gap:10px}
-.big p,.big li{color:var(--fg)}
-.dot{width:12px;height:12px;border-radius:50%;flex:none;display:inline-block}
-.dot.w{background:#fff;border:2px solid var(--white-c)}
-.dot.b{background:#1b1424;border:2px solid var(--ok)}
-.warnbox{background:var(--avoid-bg);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
-.warnbox strong{color:var(--avoid)}
-
-/* figures */
-figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
-figcaption{font-size:.82rem;color:var(--muted)}
-.zoom{all:unset;cursor:zoom-in;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
-.zoom img{display:block;width:100%;height:auto}
-.zoom.sprite{background:var(--sprite-bg)}
-.zoom.sprite img{max-height:210px;object-fit:contain;padding:6px;box-sizing:border-box}
-.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-
-/* phase */
-.phead{display:flex;flex-direction:column;gap:4px}
-.goal{display:inline-block;align-self:flex-start;background:var(--fg);color:var(--bg);border-radius:6px;padding:2px 10px;font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
-.target{border-left:3px solid var(--accent);padding:4px 12px;font-weight:700}
-.tl{display:flex;flex-direction:column;gap:6px}
-.step{display:grid;grid-template-columns:104px minmax(0,1fr);gap:10px;align-items:center}
-.when{font-weight:800;font-variant-numeric:tabular-nums;font-size:.85rem;color:var(--muted)}
-.what{border-radius:8px;padding:6px 10px;font-weight:700;font-size:.9rem;min-width:0}
-.what.hit{background:var(--neutral-bg);color:var(--neutral-fg)}
-.what.burst{background:var(--burst-bg);color:var(--burst)}
-.what.ori{background:var(--ori-bg);color:var(--ori)}
-.what.chill{border:1px dashed var(--line);color:var(--muted);font-weight:600}
-.what.warn{background:var(--avoid-bg);color:var(--avoid)}
-.tl-legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.8rem;color:var(--muted)}
-.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:4px}
-.sw.hit{background:var(--neutral-bg);border:1px solid var(--line)} .sw.burst{background:var(--burst)} .sw.ori{background:var(--ori)} .sw.chill{border:1px dashed var(--muted)}
-.seq{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.mv{border-radius:8px;padding:4px 10px;font-weight:800;font-size:.85rem;display:inline-flex;flex-direction:column;line-height:1.2}
-.mv small{font-weight:600;font-size:.72rem;opacity:.85}
-.mv.kick{background:var(--avoid-bg);color:var(--avoid)}
-.mv.light{background:var(--ok-bg);color:var(--ok-fg)}
-.mv.vac{background:var(--ori-bg);color:var(--ori)}
-.mv.fma{background:var(--fg);color:var(--bg)}
-.arrow{color:var(--muted)}
-.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-.tip{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.who{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
-
-/* attacks */
-.group{display:flex;flex-direction:column;gap:10px}
-.gh{font-weight:800;display:flex;align-items:center;gap:8px;font-size:.95rem}
-.gh.avoid{color:var(--avoid)} .gh.ok{color:var(--ok-fg)} .gh.dodge{color:var(--muted)}
-.atks{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.atk{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.atk.avoid{border-color:var(--avoid);box-shadow:inset 0 0 0 1px var(--avoid-bg)}
-.an{font-weight:800;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.aka{font-size:.8rem;color:var(--muted);font-weight:600}
-.atk p{font-size:.88rem}
-.atk .do b{color:var(--accent)}
-.thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px}
-.tag{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:1px 9px;font-size:.74rem;font-weight:800;white-space:nowrap}
-.tag.w{background:var(--avoid-bg);color:var(--avoid)}
-.tag.b{background:var(--ok-bg);color:var(--ok-fg)}
-.tag.x,.tag.n{background:var(--neutral-bg);color:var(--neutral-fg)}
-.tag.d{background:var(--burst-bg);color:var(--burst)}
-
-/* glossary */
-.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
-.term{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
-.term b{display:block}
-.term span{color:var(--muted);font-size:.88rem}
-
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.foot{color:var(--muted);font-size:.85rem}
-.foot a{color:var(--accent)}
-
-/* lightbox */
-dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1100px)}
-dialog::backdrop{background:rgba(10,8,16,.85)}
-dialog img{display:block;max-width:100%;max-height:82vh;border-radius:10px;background:#fff}
-dialog p{color:#fff;margin-top:8px;font-size:.9rem}
-dialog button{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;border:0;border-radius:999px;width:36px;height:36px;font-size:1.2rem;cursor:pointer}
-
-@media (max-width:600px){.rule,.grid2{grid-template-columns:1fr}.step{grid-template-columns:84px minmax(0,1fr)}h1{font-size:1.7rem}}
-</style>
-
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="BeyondReach guild info and MapleStory M boss guides. Choose a boss to open its cheat sheet.">
+  <title>BeyondReach · Info &amp; Boss guides</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="translation.css">
+</head>
+<body>
 <main class="wrap">
   <header>
-    <div class="guild"><span class="guild-name">BeyondReach</span><span class="guild-tag">Internal use only</span></div>
-    <div class="label">MapleStory M · Guild boss guide</div>
-    <h1>Black Mage Cheat Sheet</h1>
-    <p class="byline">Compiled by Faye · Updated Oct 20, 2026</p>
-    <p class="sub">For reference only. Info may not be fully accurate and will keep being updated. Team notes from Faye, Dro and hui. Tap any picture to enlarge it.</p>
-    <div class="facts">
-      <span class="fact"><b>Lv. 250+</b> &amp; 6th job</span>
-      <span class="fact"><b>Up to 10</b> players</span>
-      <span class="fact"><b>30 min</b></span>
-      <span class="fact"><b>1 clear</b> a month (resets on the 1st)</span>
-      <span class="fact"><b>12 lives</b> each</span>
-      <span class="fact">Aim for <b>80% DEF Ignore</b>, <b>1,320 ARC</b></span>
-    </div>
+    <div class="guild"><span class="guild-name">BeyondReach</span><span class="guild-tag">Internal use only</span><div class="translation-actions" role="group" aria-label="Translate this page"><a class="translate-link" href="https://translate.google.com/translate?sl=auto&amp;tl=th&amp;u=https%3A%2F%2Fbeyond-reach-info.github.io%2F" target="_blank" rel="noopener" lang="th" translate="no" aria-label="แปลเป็นไทยผ่าน Google Translate (เปิดแท็บใหม่)" title="Google Translate - Opens in a new tab">แปลเป็นไทย <span aria-hidden="true">EN &rarr; TH</span></a><a class="translate-link" href="https://translate.google.com/translate?sl=en&amp;tl=zh-CN&amp;u=https%3A%2F%2Fbeyond-reach-info.github.io%2F" target="_blank" rel="noopener" lang="zh-Hans" translate="no" aria-label="Translate English to Simplified Chinese with Google Translate (opens in a new tab)" title="Google Translate - Opens in a new tab">简体中文 <span aria-hidden="true">EN &rarr; ZH</span></a></div></div>
+    <p class="label">MapleStory M · Guild info &amp; guides</p>
+    <h1>A little prep.<br>A better boss run.</h1>
+    <p class="sub">Guild info, team notes and boss cheat sheets in one place. Choose a boss below to get ready for your next run.</p>
   </header>
 
-  <nav aria-label="Sections">
-    <a href="#basics">Basics</a>
-    <a href="#p1">P1 <span>DPS check</span></a>
-    <a href="#p2">P2 <span>I-frames</span></a>
-    <a href="#p3">P3 <span>Rhythm</span></a>
-    <a href="#p4">P4 <span>Solo</span></a>
-    <a href="#words">Words</a>
-    <a href="#prep">Prep</a>
+  <nav aria-label="Main sections">
+    <a href="#info">Info</a>
+    <a href="#bosses">Boss guides</a>
+    <a href="members.html">Members</a>
   </nav>
 
-  <!-- BASICS -->
-  <section id="basics" aria-labelledby="basics-h">
-    <div class="phead"><div class="label">Start here</div><h2 id="basics-h">How the fight works</h2></div>
-    <div class="card">
-      <ol>
-        <li>The fight has <b>4 phases</b>. P1 is two knights, P2 and P3 are the Black Mage himself, and P4 is a solo fight where everyone is split into their own room.</li>
-        <li>Each phase has a few <b>FMAs</b> (full map attacks). A warning banner shows up first, and your survival depends on reading it.</li>
-        <li>After most FMAs the boss puts up a <b>shield</b>. Your hits drain the shield first, so the team saves origins for the right moments.</li>
-        <li>You have <b>12 lives</b> for the whole fight, personal and not shared. Lose them all and you can only watch.</li>
-        <li>Most attacks give a <b>white</b> or <b>black</b> curse. Holding both at once is how lives disappear. That is the rule below.</li>
-      </ol>
-      <p class="sub">P2 is the hardest stage, followed by P3. Practice them in Boss Practice Mode first (Dro).</p>
+  <section id="info" aria-labelledby="info-h">
+    <div><p class="label">Start here</p><h2 id="info-h">Guild info</h2></div>
+    <div class="info-grid">
+      <article class="card">
+        <h3>About this hub</h3>
+        <p class="sub">A shared reference for BeyondReach members, bringing together boss mechanics, party plans and tips from team chat.</p>
+      </article>
+      <article class="card">
+        <h3>Before your run</h3>
+        <p class="sub">Pick a boss, review the basics and check the party plan. Use the cheat sheet to look up phase mechanics and team calls.</p>
+      </article>
     </div>
-
-    <h3>The one rule: never hold both curses</h3>
-    <div class="rule">
-      <div class="big ok">
-        <h3><span class="dot b"></span>Black · Destructive curse</h3>
-        <ul>
-          <li>More crit damage, but you take more damage</li>
-          <li><b>No potions, Power Elixirs or ACP</b> while it's on (Fever tickets still work)</li>
-          <li>The team prefers to carry black, because black attacks are everywhere (like the chains from the top in P1 and P2)</li>
-        </ul>
-      </div>
-      <div class="big avoid">
-        <h3><span class="dot w"></span>White · Creative curse</h3>
-        <ul>
-          <li>You heal slowly, but deal less damage</li>
-          <li>You explode now and then, hurting players near you</li>
-          <li>Not the end of the world: if you pick up white and no black attacks are around, stay calm and dodge the black ones until it wears off</li>
-        </ul>
-      </div>
-    </div>
-    <div class="warnbox">
-      <strong>Curse Crossing: hit by the other color while cursed</strong>
-      <p>You lose 1 life, take damage, and get <b>skill locked</b>. While locked you can't teleport, blink or i-frame, and ACP doesn't work. That's how one mistake snowballs into losing 4–5 lives. If it happens, stay calm and dodge with plain movement until the lock ends (Dro). Resurrect and Guardian can't block this, and at 0 lives you die on the spot.</p>
-    </div>
-    <div class="card">
-      <p>The curse shows as a symbol above your character and lasts a set time, then goes away. These are the official pictures:</p>
-      <div class="figs" id="fig-curse"></div>
-    </div>
+    <p class="sub">For reference only. Info may not be fully accurate and will keep being updated.</p>
   </section>
 
-  <div id="phases"></div>
-
-  <!-- WORDS -->
-  <section id="words" aria-labelledby="words-h">
-    <div class="phead"><div class="label">Team language</div><h2 id="words-h">Words you'll hear</h2><p class="sub">Some nicknames are matched to the official attack names by their pictures. Ones marked "likely" are best guesses.</p></div>
-    <div class="gloss" id="gloss"></div>
+  <section id="bosses" aria-labelledby="bosses-h">
+    <div><p class="label">Choose your fight</p><h2 id="bosses-h">Boss guides</h2></div>
+    <ul class="boss-list">
+      <li>
+        <a class="boss-link" href="black-mage.html" aria-labelledby="black-mage-name black-mage-link">
+          <div class="boss-top"><h3 id="black-mage-name">Black Mage</h3><span class="status">Cheat Sheet</span></div>
+          <p class="sub">Curses, shields and all four phases. Includes party plans, attack references and tips from Faye, Dro and hui.</p>
+          <div class="boss-bottom">
+            <div class="facts"><span class="fact">Lv. 250+ &amp; 6th job</span><span class="fact">Up to 10 players</span><span class="fact">4 phases</span></div>
+            <span class="open-guide" id="black-mage-link">Open Cheat Sheet <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+      </li>
+    </ul>
   </section>
 
-  <!-- PREP -->
-  <section id="prep" aria-labelledby="prep-h">
-    <div class="phead"><div class="label">Before you go</div><h2 id="prep-h">Prep and rewards</h2></div>
-    <div class="grid2">
-      <div class="card">
-        <div class="label">Bring</div>
-        <ul>
-          <li>Potion cooldown is 10 sec (Power Elixir and All-Cure 5 sec)</li>
-          <li>Self-heals and i-frame skills, since black blocks potions</li>
-          <li>A teleport or i-frame for P1 Red Lightning</li>
-          <li>ACP stocked, and blink ready for P3 Blue Meteor</li>
-          <li>Practice in Boss Practice Mode (added in the Feb patch)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="label">You get</div>
-        <ul>
-          <li>600 Sol Erda Energy every clear</li>
-          <li>After the kill, break the Genesis Crux in the reward map to get the loot</li>
-          <li>Chance at the <b>Genesis Badge</b> (5% Final DMG, 3% Boss DEF), or trade 60 Chain of Destruction + 20 Primal Essence for it</li>
-          <li>1st clear: medal with 5% DEF Ignore, 1,000 ATK/MAG ATK</li>
-          <li>4th clear: Source of Darkness mount</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <p class="foot"><b>BeyondReach</b> · compiled by Faye · internal use only.<br>Official pictures and attack details from Nexon's <a href="https://forum.nexon.com/MapleStoryMGlobal/board_view?board=2690&amp;thread=3346781" target="_blank" rel="noopener">01.14/15 Patch Notes Pt.2</a>. Gameplay screenshots and tips from team chat (hui). Party plans from Faye and Dro.</p>
+  <footer>BeyondReach · MapleStory M · Made for the guild.</footer>
 </main>
-
-<dialog id="lb" aria-label="Enlarged picture"><button type="button" id="lb-x" aria-label="Close">×</button><img id="lb-img" alt=""><p id="lb-cap"></p></dialog>
-
-<script>
-const im=(f,cap,shot)=>({f,cap,shot:!!shot});
-const fig=(i)=>`<figure><button type="button" class="zoom${i.shot?"":" sprite"}" data-src="img/${i.f}" data-cap="${i.cap.replace(/"/g,"&quot;")}"><img src="img/${i.f}" alt="${i.cap.replace(/"/g,"&quot;")}" loading="lazy"></button>${i.cap?`<figcaption>${i.cap}</figcaption>`:""}</figure>`;
-
-document.getElementById("fig-curse").innerHTML=[
- im("252ce10a.jpg","Curse icons. Pink = white (Creative), dark = black (Destructive)."),
- im("acb56f1b.jpg","White-curse explosion around your character (P1–3 left, P4 right). It hurts people next to you."),
- im("b34f87e7.jpg","Special death count. This replaces the normal one and shows your lives left."),
- im("10697433.jpg","Shield gauge on the boss HP bar. While it shows, you're hitting the shield, not HP."),
- im("7d0cd40b.jpg","The boss shield, P1–3 and P4 versions.")
-].map(fig).join("");
-
-const TAG={w:'<span class="tag w"><span class="dot w"></span>White</span>',b:'<span class="tag b"><span class="dot b"></span>Black</span>',x:'<span class="tag x"><span class="dot w"></span><span class="dot b"></span>Either</span>',d:'<span class="tag d">Debuff</span>',n:'<span class="tag n">No curse</span>'};
-const GROUPS=[["avoid",'<span class="dot w"></span>AVOID · white attacks'],["ok",'<span class="dot b"></span>OK to take · black attacks'],["dodge","Other mechanics · dodge, debuffs, FMAs"]];
-
-// attack: {n:name, aka, g:group, c:curse, what, todo, img:[im]}
-const P=[
-{id:"p1",n:1,title:"Two knights",goal:"DPS check",
- hero:[im("4bf38e80.jpg","Aeonian Rise (white, left) and Tanadian Ruin (black, right). They share one HP bar.")],
- plan:[
-  ["Go in","hit","Wait for the right knight to dash left so both knights are on the same side. Then everyone's bursts hit both."],
-  ["29:54","ori","Team origin. 5 team DPS full burst + origin. Faye (Bishop) holds her origin and only bursts."],
-  ["29:46","burst","Faye stuns. Keep DPS going."],
-  ["After stun","burst","Keep bursting until P2 starts"],
-  ["29:33","warn","Not down by now? The team needs to swap in more DPS."]
- ],
- notes:["No need to move left or right. Stay in the middle and hit.","If DPS is short, the team has to run a few extra pattern cycles, which is unnecessary risk."],
- atk:[
-  {n:"Aeonian Rise · Charge",g:"avoid",c:"w",what:"The white knight dashes forward and slashes everything in its path.",todo:"Get out of its path.",img:[im("4e0ec230.jpg","Charge. White knight's version gives white.")]},
-  {n:"Aeonian Rise · Chain Whip",g:"avoid",c:"w",what:"Chains swing in front of the white knight with a knockback.",todo:"Don't stand right in front of it.",img:[im("e6f047af.jpg","Chain Whip")]},
-  {n:"Abyssal Drop",aka:"likely the “cotton candy”",g:"avoid",c:"w",what:"Balls fall one after another from the top, going from one side of the map to the other.",todo:"Watch the direction and step between them.",img:[im("c8a5611a.jpg","Abyssal Drop")]},
-  {n:"Tanadian Ruin · Charge & Chain Whip",g:"ok",c:"b",what:"Same two moves from the black knight. Gives black.",todo:"OK to take, but it still hurts.",img:[im("4e0ec230.jpg","Charge (black knight on the right)")]},
-  {n:"Living Chains",aka:"the chains from the top",g:"ok",c:"b",what:"Chains drop on your position several times. Only you can see your own.",todo:"This is the easy way to stay black. Keep moving so you don't take too many.",img:[im("180809d2.jpg","Living Chains")]},
-  {n:"Shrieking Wall",g:"dodge",c:"n",what:"Walls rise at both edges and move closer to the center each time. You can't pass through. Then both knights slam the center and a shield goes up.",todo:"Stay in the middle. Break the shield after.",img:[im("30fd15e8.jpg","Shrieking Wall")]},
-  {n:"Punish",g:"dodge",c:"n",what:"A knight vanishes and slams down from the air above you.",todo:"Keep moving when a knight disappears.",img:[im("2f92bce6.jpg","Punish")]},
-  {n:"Red Lightning",g:"dodge",c:"n",what:"Red pillars appear in set spots and keep hurting anyone close or passing through.",todo:"Only a teleport or i-frame gets you through. Otherwise go around.",img:[im("7e701192.jpg","Red Lightning")]}
- ]},
-{id:"p2",n:2,title:"Black Mage on his throne",goal:"I-frame management",
- hero:[im("ae0052c1.jpg","The FMA read. Look at the orbs on the boss: red only, purple only, or both.")],
- plan:[
-  ["Whole phase","hit","Audio command plays (Dro shares, Faye plays it, like Damien runs). It calls out fire dog, dispel and FMA."],
-  ["FMA 1","ori","Banner up → Faye origins. Everyone keeps hitting."],
-  ["FMA 2","warn","Self survive. Faye can hourglass. Read the orbs (below). Dodge, i-frame, or lose 1 life if that's the safest option."],
-  ["After FMA 2","chill","Huge shield. Everyone gathers far right and waits."],
-  ["FMA 3","ori","Team origin. Banner up → DS4 sync and origin."],
-  ["FMA 4","warn","Self survive again, gather right. Should end here → P3."]
- ],
- notes:[
-  "<b>Read the orbs on the boss at FMA 2 and 4:</b> red orb → go far <b>left</b>. Purple orb → go far <b>right</b>. Both → stay <b>middle</b>.",
-  "Going left or right: stand close to the edge but <b>don't touch the edge</b>, or you die.",
-  "<b>Blockers:</b> Grey first, TCP second. At each fire dog: i-frame, fly up and block. If your i-frame is still up, block the cotton candy too.",
-  "<b>After FMA 2 and 4:</b> wait on the far right while the shield is up. Don't waste DPS. When the next fire dog lands and moves right toward you, jump and fly back to the center. The shield is gone by then, so resume DPS. Don't fly too early; wait until the dog is close (hui).",
-  "Sometimes losing 1 life on purpose is the right call. One mistake can cost 4–5 lives at once.",
-  "The sequence repeats, about 4 FMAs total. Learn which attacks are white and which are black."
- ],
- target:"Enter P3 with at least 7–8 lives. Nobody can afford to die out.",
- tips:[
-  {who:"hui",text:"<b>Ground spikes:</b> there are 3 different spikes. The safest spot is the spike that comes up <b>second</b>, not the first.",img:[im("u-p2-spikes.jpg","Blue circle: standing at the second spike",1)]},
-  {who:"hui",text:"<b>FMA with shield:</b> go to the right corner (green circle) and wait. The blue circle shows the shield on the boss HP bar.",img:[im("u-p2-fma-shield.jpg","After FMA 2: everyone in the right corner",1)]}
- ],
- atk:[
-  {n:"Morning Star",aka:"the “fire dog”",g:"avoid",c:"w",what:"Purple fireballs fall diagonally toward the bottom left. Where they land, a creature forms and runs along the floor.",todo:"Blockers i-frame and block it. Everyone else jumps over it when it comes along the floor.",img:[im("64b20e73.jpg","Morning Star: falling (left) and landed (right)")]},
-  {n:"Moonlight Spear",aka:"the “ground spikes”",g:"avoid",c:"w",what:"Spears form across the floor, then shoot upward. The far edges are safe.",todo:"Stand at the spike that comes up second (hui), or go to an edge.",img:[im("b5ad003b.jpg","Moonlight Spear: forming (left), firing (right)")]},
-  {n:"Abyssal Drop",aka:"likely the “cotton candy”",g:"avoid",c:"w",what:"Same as P1. Balls fall in a line across the top.",todo:"Step between them. Blockers can block it if their i-frame is still up.",img:[im("c8a5611a.jpg","Abyssal Drop")]},
-  {n:"Eye of Destruction",g:"ok",c:"b",what:"Two eyes appear. One bounces around the map, the other chases players.",todo:"OK to take. Lead the chasing eye away from the party.",img:[im("811a456a.jpg","Eye of Destruction")]},
-  {n:"Living Chains",g:"ok",c:"b",what:"Same as P1.",todo:"Easy black. Keep moving.",img:[im("180809d2.jpg","Living Chains")]},
-  {n:"Red Lightning · FMA",aka:"the P2 FMA",g:"dodge",c:"n",what:"Lightning covers the whole map except a few safe spots. A big shield goes up after.",todo:"Red orb → left, purple → right, both → middle. Hug the edge without touching it.",img:[im("ae0052c1.jpg","Orbs on the boss tell you where to go"),im("f639ee25.jpg","The lightning covering the map")]},
-  {n:"Darkness",aka:"what “dispel” clears (likely)",g:"dodge",c:"d",what:"A Darkness debuff on everyone for a while.",todo:"Wait for the dispel call. Luminous resists it.",img:[im("4b3bc2a2.jpg","Darkness")]},
-  {n:"Surrounding Damage",g:"dodge",c:"n",what:"Damage pulses around the boss every so often.",todo:"Watch your HP when you stand close.",img:[im("867b9df5.jpg","Surrounding Damage")]}
- ]},
-{id:"p3",n:3,title:"The ball and the platforms",goal:"Follow the rhythm",
- hero:[im("04d26daf.jpg","The ball (Shield Zone). Stay inside it to deal full damage.")],
- rotation:true,
- plan:[
-  ["Enter P3","warn","Immediately get out of the boss circle. A kick hits within 1–2 sec (−1 life). Expect 2 kicks right away."],
-  ["Start → FMA 1","burst","DPS cycle: normal hit / 1-min bursts"],
-  ["FMA 1 → 2","ori","Faye (support) origin when the banner is up / V skills / hit"],
-  ["FMA 2 → 3","chill","Rest cycle"],
-  ["FMA 3 → 4","burst","Normal hit / 1-min bursts"],
-  ["FMA 4 → 5","ori","Team origin / V skills / hit"],
-  ["FMA 5 → 6","chill","Rest cycle"],
-  ["FMA 6 → 7","burst","Normal hit / 1-min bursts"],
-  ["FMA 7 → 8","ori","Support origin / V skills / hit"],
-  ["FMA 8 → 9","chill","Rest cycle"],
-  ["FMA 9 → 10","burst","Normal hit / 1-min bursts"],
-  ["FMA 10 → 11","ori","Team origin / V skills / hit"]
- ],
- notes:[
-  "<b>Kick</b> = get out or don't stand close. <b>Light</b> and <b>vac</b> = go into the ball and attack.",
-  "Burst and origin <b>only inside the ball</b>. Outside it your damage is −50% and you can't heal, so PE won't work. Same idea as Magnus.",
-  "The ball only gets smaller (twice), so your movement has to get sharper as the phase goes on.",
-  "<b>Rest cycle:</b> Pin holds the boss center (not too far left). Everyone else stops hitting and stays right, surviving until bursts are back.",
-  "Same as the other phases: keep track of black and white attacks."
- ],
- tips:[
-  {who:"hui",text:"<b>FMA type 1. Boss turns white:</b> white balls fall from the sky. Getting hit = 100% death. Hide <b>under</b> a platform.",img:[im("u-p3-white-fma.jpg","White FMA: the white balls coming down",1)]},
-  {who:"hui",text:"<b>FMA type 2. Boss turns colorful:</b> a laser on the ground. 100% death. Get <b>on</b> a platform. Platforms can be fake, so one person watches and calls which one is real. Then the other 9 can dodge easily.",img:[im("u-p3-banner-1.jpg","The FMA warning banner",1),im("u-p3-banner-2.jpg","Banner again. Check the boss color right away.",1)]},
-  {who:"hui",text:"<b>Red meteor:</b> moves across left and right. If you don't run, it does around 150k damage per second.",img:[im("u-p3-red-meteor.jpg","Red meteor",1)]},
-  {who:"hui",text:"<b>Blue meteor:</b> stuns you over and over. Getting caught is basically waiting to die. You need fast ACP + blink, or ACP alone won't get you out. Bene can skip the stun. Also around 150k per second.",img:[im("u-p3-blue-meteor.jpg","Blue meteor",1)]}
- ],
- atk:[
-  {n:"Knockback",aka:"the “kick”",g:"avoid",c:"w",what:"He kicks nearby players away and gives white. It can throw you out of the ball.",todo:"Step out of the ball before it comes, then go back in.",img:[im("043a96a0.jpg","Knockback")]},
-  {n:"Morning Star",aka:"fire dog",g:"avoid",c:"w",what:"Like P2, but it falls straight through platforms.",todo:"Platforms won't protect you from this one.",img:[im("011dc353.jpg","Falling"),im("52246b4e.jpg","Landed and moving")]},
-  {n:"Abyssal Drop",g:"avoid",c:"w",what:"Same as P1.",todo:"Step between them.",img:[im("c8a5611a.jpg","Abyssal Drop")]},
-  {n:"Cross Laser",g:"ok",c:"b",what:"Lines cross the map, then fire. Sometimes a stronger version.",todo:"OK to take. Stand in the gaps if your HP is low.",img:[im("b517db87.jpg","Cross Laser"),im("3d5da9bd.jpg","Enhanced Cross Laser")]},
-  {n:"Angel of Destruction",g:"ok",c:"b",what:"Angels float in the air, shooting at whoever is in front of them, or straight down.",todo:"OK to take, but they hurt.",img:[im("8496d737.jpg","Angel of Destruction")]},
-  {n:"FMA · Powers of Creation",aka:"white FMA",g:"dodge",c:"n",what:"Boss glows white. Meteors drop across the map and explode on the ground and on platforms.",todo:"Hide UNDER a platform. Platforms vanish and a shield goes up after.",img:[im("7f4b9ea8.jpg","Boss aura: white (left) vs colorful (right)"),im("34323768.jpg","Creation meteor and its explosion")]},
-  {n:"FMA · Powers of Destruction",aka:"colorful FMA",g:"dodge",c:"n",what:"Boss glows colorful. The whole floor turns into damage.",todo:"Stand ON a real platform. Shield after.",img:[im("c406d8c6.jpg","Floor damage")]},
-  {n:"Floating Platforms",g:"dodge",c:"n",what:"Platforms appear in the air for a while. They explode when they appear and when they disappear. Some are fake.",todo:"Follow the caller to the real one. Step off before it pops.",img:[im("109fe4da.jpg","Platform"),im("58d715c0.jpg","Platform explosion")]},
-  {n:"Pull",aka:"the “vac”",g:"dodge",c:"n",what:"He keeps pulling nearby players toward him.",todo:"Go in and hit.",img:[im("dba67652.jpg","Pull")]},
-  {n:"Shield Zone",aka:"the “ball”",g:"dodge",c:"d",what:"A bubble around him. Outside it: −50% damage and heal block. Shrinks twice.",todo:"Burst and origin inside.",img:[im("04d26daf.jpg","Shield Zone")]},
-  {n:"Red Meteor",g:"dodge",c:"d",what:"Rises from the bottom of the map and confuses you (controls flip). Around 150k/s.",todo:"Run from it. Don't stand where it spawns.",img:[im("fc69a42d.jpg","Red Meteor")]},
-  {n:"Blue Meteor",g:"dodge",c:"d",what:"Falls from the top, changes direction, and stuns. Around 150k/s.",todo:"Watch it turn. If caught: ACP + blink fast. Bene can skip the stun.",img:[im("1e21a243.jpg","Blue Meteor")]}
- ]},
-{id:"p4",n:4,title:"Solo rooms",goal:"Survive and burst",
- hero:[im("930865d3.jpg","Transform Attribute is its own button. You can move it in Control Button Settings.")],
- plan:[
-  ["Start","burst","Keep your gauge black. 1-min burst classes burst, others hit until the end of FMA 1."],
-  ["FMA 1 → 2","chill","Chill"],
-  ["FMA 2 → 3","ori","Team origin / V skills / hit"],
-  ["FMA 3 → 4","chill","Chill"],
-  ["FMA 4 → 5","ori","Support origin / V skills / hit"],
-  ["FMA 5 → 6","chill","Chill"],
-  ["FMA 6 → 7","ori","Team origin / V skills / hit"],
-  ["FMA 7 → 8","chill","Chill"],
-  ["FMA 8 → 9","ori","Support origin / V skills / hit"],
-  ["FMA 9 → 10","chill","Chill. Repeat until clear."]
- ],
- notes:[
-  "Everyone is alone in their own room with the Black Mage, but his HP and shield are shared. Agree on each other's burst and origin cooldowns before the run.",
-  "You're given a white or black <b>attribute</b>. Attacks of your own color can't hurt you. Keep yourself <b>black</b>.",
-  "Switch color with <b>Transform Attribute</b> (G on PC). It has a cooldown.",
-  "After every FMA, check your room is still black and check your ACP."
- ],
- atk:[
-  {n:"White attacks",g:"avoid",c:"w",what:"Bullets, explosions and the FMA all come in white or black. While you're black, the white ones still hit you.",todo:"Dodge every white attack.",img:[im("c265e96f.jpg","Barrage"),im("c4566a68.jpg","Attribute Explosion")]},
-  {n:"Force Transform",g:"avoid",c:"d",what:"Every so often he flips everyone's color at random.",todo:"If you turn white, switch back to black.",img:[im("e784a6b6.jpg","Force Transform")]},
-  {n:"Black attacks",g:"ok",c:"b",what:"Same attacks in black. They pass through you while your attribute is black.",todo:"Ignore them and keep hitting.",img:[im("72f9a86c.jpg","Powers of One Close to God")]},
-  {n:"FMA · Powers of One Close to God",g:"dodge",c:"x",what:"His power covers the whole map in white or black, then explodes. A shield goes up after.",todo:"Make sure your color matches before it explodes, then break the shield.",img:[im("d0e975e0.jpg","Building up"),im("72f9a86c.jpg","Exploding")]},
-  {n:"Transform Attribute",aka:"your button",g:"dodge",c:"n",what:"Switches you between white and black.",todo:"Save the cooldown for when you need it.",img:[im("23da4774.jpg","Button icon"),im("1a3b701c.jpg","White attribute"),im("14559659.jpg","Black attribute")]},
-  {n:"Slow",g:"dodge",c:"d",what:"Slows you down and stops you from jumping (double jump too).",todo:"Be in a safe spot before it lands.",img:[im("5c8946e2.jpg","Slow"),im("920b3ca9.jpg","Slow effect")]}
- ]}
-];
-
-const ROT=["kick","kick","light","vac","|","kick","light","kick","vac","light","|","kick","fma"];
-const MV={kick:["Kick","get out"],light:["Light","go in"],vac:["Vac","go in & hit"],fma:["FMA","platform"]};
-const tl=s=>`<div class="tl">${s.map(([w,c,t])=>`<div class="step"><div class="when">${w}</div><div class="what ${c}">${t}</div></div>`).join("")}</div><div class="tl-legend"><span><i class="sw ori"></i>Origin</span><span><i class="sw burst"></i>Burst / DPS</span><span><i class="sw hit"></i>Normal</span><span><i class="sw chill"></i>Rest</span><span><i class="sw" style="background:var(--avoid)"></i>Careful</span></div>`;
-const rot=()=>{let groups=[[]];ROT.forEach(m=>m==="|"?groups.push([]):groups[groups.length-1].push(m));return `<div class="card"><div class="label">P3 move rotation · repeats</div>${groups.map(g=>`<div class="seq">${g.map(m=>`<span class="mv ${m}">${MV[m][0]}<small>${MV[m][1]}</small></span>`).join('<span class="arrow">→</span>')}</div>`).join("")}<p class="sub">Faye's and Dro's notes split it into slightly different groups, but the order is the same.</p></div>`};
-const atk=a=>`<article class="atk ${a.g}"><div class="an">${a.n} ${TAG[a.c]}</div>${a.aka?`<div class="aka">Team calls it: ${a.aka}</div>`:""}<div class="thumbs">${a.img.map(fig).join("")}</div><p>${a.what}</p><p class="do"><b>Do:</b> ${a.todo}</p></article>`;
-
-document.getElementById("phases").innerHTML=P.map(p=>`
-<section id="${p.id}" aria-labelledby="${p.id}h">
-  <div class="phead"><span class="goal">${p.goal}</span><div class="label">Phase ${p.n} of 4</div><h2 id="${p.id}h">${p.title}</h2></div>
-  <div class="figs">${p.hero.map(fig).join("")}</div>
-  ${p.rotation?rot():""}
-  <div class="card"><div class="label">Party plan</div>${tl(p.plan)}<ul>${p.notes.map(n=>`<li>${n}</li>`).join("")}</ul>${p.target?`<div class="target">${p.target}</div>`:""}</div>
-  ${p.tips?`<div class="label">Tips from team chat, with screenshots</div><div class="tips">${p.tips.map(t=>`<div class="tip"><div class="who">${t.who}</div><div class="figs">${t.img.map(fig).join("")}</div><p>${t.text}</p></div>`).join("")}</div>`:""}
-  ${GROUPS.map(([k,h])=>{const l=p.atk.filter(a=>a.g===k);return l.length?`<div class="group"><div class="gh ${k}">${h}</div><div class="atks">${l.map(atk).join("")}</div></div>`:""}).join("")}
-</section>`).join("");
-
-const G=[
- ["FMA","Full map attack. The big move in each phase, announced by a banner."],
- ["Banner","The warning message across the screen right before an FMA."],
- ["Ori / origin","Your HEXA Origin skill, the biggest burst. Timed by the party plan."],
- ["Burst / 1-min burst","Popping your damage buffs together. 1-min bursts come back every minute."],
- ["I-frame","A skill that makes you invincible for a moment."],
- ["Blink / tele","Teleport skills. They don't work while skill locked."],
- ["Skill lock","What Curse Crossing does: no skills, no ACP, for a while."],
- ["ACP","All-Cure Potion. Clears stuns and debuffs. Can't be used while black-cursed or skill locked."],
- ["PE","Power Elixir. Doesn't heal you outside the P3 ball, or while black-cursed."],
- ["Ball / circle","P3 Shield Zone around the boss. Stay inside."],
- ["Kick","P3 Knockback. Gives white, so get out."],
- ["Vac","P3 Pull. Go in and hit."],
- ["Light","Team call in the P3 rotation: safe to go in and hit."],
- ["Fire dog / sky dog","Morning Star: falls, lands, then runs along the floor. White."],
- ["Cotton candy","Likely Abyssal Drop, the balls falling in a line. White."],
- ["Ground spikes","Moonlight Spear in P2. White."],
- ["Blocker","Player who i-frames to soak fire dogs (and cotton candy) for the team. Grey first, TCP second."],
- ["Dispel","Called in P2 audio. Likely clearing the Darkness debuff."],
- ["Hourglass","A survival skill Faye can use at P2 FMA 2."],
- ["Bene","Can skip the P3 Blue Meteor stun (hui)."],
- ["DS4 sync","Team call at P2 FMA 3, used together with team origin."],
- ["Rest cycle","P3/P4 stretch with no origin ready: survive and wait. In P3, Pin holds center."],
- ["Room","Your own P4 arena. Its color shows your attribute."]
-];
-document.getElementById("gloss").innerHTML=G.map(([t,d])=>`<div class="term"><b>${t}</b><span>${d}</span></div>`).join("");
-
-const lb=document.getElementById("lb"),lbi=document.getElementById("lb-img"),lbc=document.getElementById("lb-cap");
-document.addEventListener("click",e=>{const z=e.target.closest(".zoom");if(z){lbi.src=z.dataset.src;lbi.alt=z.dataset.cap;lbc.textContent=z.dataset.cap;try{lb.showModal()}catch(_){}}});
-document.getElementById("lb-x").onclick=()=>lb.close();
-lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
-</script>
-
-</body></html>
+</body>
+</html>
