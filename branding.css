@@ -9,7 +9,7 @@
 body.site-background{isolation:isolate}
 body.site-background::after{
   content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background-image:linear-gradient(color-mix(in srgb,var(--bg) 35%,transparent),color-mix(in srgb,var(--bg) 35%,transparent)),url("img/comons/maplemaple-resized.png");
+  background-image:linear-gradient(color-mix(in srgb,var(--bg) 35%,transparent),color-mix(in srgb,var(--bg) 35%,transparent)),url("img/comons/maplestory-m-background.png");
   background-position:center;background-size:cover;background-repeat:no-repeat;
 }
 body.site-background>.wrap{
