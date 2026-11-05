@@ -1,277 +1,678 @@
 <!doctype html>
 <html lang="th">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Chaos Lucid Run Guide · BeyondReach</title>
-  <meta name="description" content="วิธีลง Chaos Lucid (C.Lucid): ระบบเกจ 0/30 เสาเหลืองรีเซ็ตเกจ เสาม่วงล้างผีเสื้อ และวิธีรับมือแต่ละ Phase ใน MapleStory M">
-  <link rel="icon" type="image/jpeg" sizes="400x400" href="img/comons/txM1bopK_400x400.jpg">
-  <link rel="apple-touch-icon" href="img/comons/txM1bopK_400x400.jpg">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="BeyondReach">
-  <meta property="og:title" content="Chaos Lucid Run Guide · BeyondReach">
-  <meta property="og:description" content="วิธีลง C.Lucid สำหรับปาร์ตี้ MapleStory M พร้อมสรุป Mechanics และแผนแต่ละ Phase">
-  <meta property="og:url" content="https://beyond-reach-info.github.io/clucid.html">
-  <meta property="og:image" content="https://beyond-reach-info.github.io/img/comons/txM1bopK_400x400.jpg">
-  <meta property="og:image:alt" content="MapleStory M logo">
-  <meta name="twitter:card" content="summary">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="styles.css?v=boss-art">
-  <link rel="stylesheet" href="branding.css">
-  <link rel="stylesheet" href="clucid.css">
-</head>
-<body class="site-background">
-<main class="wrap">
-  <header>
-    <div class="guild"><a class="guild-brand" href="./" aria-label="BeyondReach home"><img class="guild-logo" src="img/comons/txM1bopK_400x400.jpg" alt="" width="40" height="40"><span class="guild-name">BeyondReach</span></a><span class="guild-tag">Internal use only</span></div>
-    <p class="label">MapleStory M · Party run guide</p>
-    <h1>Chaos Lucid <span class="sub">(C.Lucid)</span></h1>
-    <p class="sub">อ่าน Mechanics ให้พร้อม แล้วตกลงจุดรวมและคนคอลก่อนเริ่มลงบอส</p>
-    <div class="facts"><span class="fact">Chaos difficulty</span><span class="fact">3 phases</span><span class="fact">คู่มือภาษาไทย</span></div>
-    <figure class="guide-figure">
-      <a href="img/clucid/chaos-lucid.png" target="_blank" rel="noopener" aria-label="ดูภาพหน้าบอส Chaos Lucid ขนาดเต็ม (เปิดแท็บใหม่)"><img src="img/clucid/chaos-lucid.png" alt="หน้าบอส Lucid ใน MapleStory M โดยเลือกความยาก Chaos" width="601" height="336" decoding="async"></a>
-      <figcaption>หน้าบอส Chaos Lucid · ภาพจาก Nexon Patch Notes วันที่ 28 สิงหาคม 2025 <a href="#sources">แหล่งอ้างอิงภาพ</a></figcaption>
-    </figure>
-  </header>
-
-  <nav aria-label="หัวข้อคู่มือ">
-    <a href="./#bosses">Boss guides</a>
-    <a href="#prep">เตรียมทีม</a>
-    <a href="#mechanics">Mechanics</a>
-    <a href="#phase1">Phase 1</a>
-    <a href="#phase2">Phase 2</a>
-    <a href="#comparison">เทียบ Phase</a>
-    <a href="#phase3">Phase 3</a>
-    <a href="#sources">แหล่งอ้างอิง</a>
-  </nav>
-
-  <section id="prep" aria-labelledby="prep-h">
-    <div><p class="label">Before the run</p><h2 id="prep-h">เตรียมทีมก่อนเข้า</h2></div>
-    <article class="card">
-      <h3>แผนแนะนำสำหรับปาร์ตี้</h3>
-      <ul>
-        <li>กำหนดคนคอล Mechanics และจุดรวมรับ Bomb ให้ทุกคนเข้าใจตรงกัน</li>
-        <li>มอบหมายคนดูเสาซ้ายสีเหลืองสำหรับรีเซ็ตเกจ และเสาขวาสีม่วงสำหรับล้างผีเสื้อ พร้อมตัวสำรอง</li>
-        <li>เช็ก Buff, Potion และสกิลเอาตัวรอด วางแผนเก็บ Burst สำหรับ Phase 3</li>
-        <li>เช็กเงื่อนไขเข้าและเวลาในหน้าบอสของเกมก่อนเริ่ม</li>
-      </ul>
-    </article>
-    <p class="sub">คู่มือนี้สำหรับ MapleStory M Global แบบปาร์ตี้ แผนการยืนและหน้าที่เป็นข้อเสนอแนะให้ทีมปรับใช้; Solo มีวิธีรับ Bomb ต่างออกไป</p>
-  </section>
-
-  <section id="mechanics" aria-labelledby="mechanics-h">
-    <div><p class="label">Quick reference</p><h2 id="mechanics-h">Mechanics ที่ต้องรู้</h2></div>
-    <div class="info-grid">
-      <article class="card">
-        <h3>Bomb → รวมตามจุดนัด</h3>
-        <p>Bomb ติดทุกคนและระเบิดหลังเวลาหน่วง ความเสียหายลดลงเมื่อมีสมาชิกอยู่ใกล้ ใช้ Dispel หรือ All-Cure Potion ลบไม่ได้</p>
-        <p class="sub">แผนทีม: คอล “Bomb รวม” และรักษา HP ก่อนระเบิด</p>
-      </article>
-      <article class="card">
-        <h3>Dragon → ดูฝั่งก่อนย้าย</h3>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>Chaos Lucid Run Guide · BeyondReach</title>
+    <meta
+      name="description"
+      content="วิธีลง Chaos Lucid (C.Lucid): ระบบเกจ 0/30 เสาเหลืองรีเซ็ตเกจ เสาม่วงล้างผีเสื้อ และวิธีรับมือแต่ละ Phase ใน MapleStory M" />
+    <link
+      rel="icon"
+      type="image/jpeg"
+      sizes="400x400"
+      href="img/comons/txM1bopK_400x400.jpg" />
+    <link rel="apple-touch-icon" href="img/comons/txM1bopK_400x400.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BeyondReach" />
+    <meta property="og:title" content="Chaos Lucid Run Guide · BeyondReach" />
+    <meta
+      property="og:description"
+      content="วิธีลง C.Lucid สำหรับปาร์ตี้ MapleStory M พร้อมสรุป Mechanics และแผนแต่ละ Phase" />
+    <meta
+      property="og:url"
+      content="https://beyond-reach-info.github.io/clucid.html" />
+    <meta
+      property="og:image"
+      content="https://beyond-reach-info.github.io/img/comons/txM1bopK_400x400.jpg" />
+    <meta property="og:image:alt" content="MapleStory M logo" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;600;700;800&display=swap" />
+    <link rel="stylesheet" href="styles.css?v=boss-art" />
+    <link rel="stylesheet" href="branding.css" />
+    <link rel="stylesheet" href="clucid.css" />
+  </head>
+  <body class="site-background">
+    <main class="wrap">
+      <header>
+        <div class="guild">
+          <a class="guild-brand" href="./" aria-label="BeyondReach home"
+            ><img
+              class="guild-logo"
+              src="img/comons/txM1bopK_400x400.jpg"
+              alt=""
+              width="40"
+              height="40" /><span class="guild-name">BeyondReach</span></a
+          ><span class="guild-tag">Internal use only</span>
+        </div>
+        <p class="label">MapleStory M · Party run guide</p>
+        <h1>Chaos Lucid <span class="sub">(C.Lucid)</span></h1>
+        <p class="sub">
+          อ่าน Mechanics ให้พร้อม แล้วตกลงจุดรวมและคนคอลก่อนเริ่มลงบอส
+        </p>
+        <div class="facts">
+          <span class="fact">Chaos difficulty</span
+          ><span class="fact">3 phases</span
+          ><span class="fact">คู่มือภาษาไทย</span>
+        </div>
         <figure class="guide-figure">
-          <a href="img/clucid/dragon.png" target="_blank" rel="noopener" aria-label="ดูภาพ Dragon ขนาดเต็ม (เปิดแท็บใหม่)"><img src="img/clucid/dragon.png" alt="มังกรสีเขียวของ Lucid ขณะใช้ Summon Dragon" width="392" height="292" loading="lazy" decoding="async"></a>
-          <figcaption>Summon Dragon · ดูฝั่งที่มังกรเกิดก่อนหลบแนวไฟ</figcaption>
+          <a
+            href="img/clucid/chaos-lucid.png"
+            target="_blank"
+            rel="noopener"
+            aria-label="ดูภาพหน้าบอส Chaos Lucid ขนาดเต็ม (เปิดแท็บใหม่)"
+            ><img
+              src="img/clucid/chaos-lucid.png"
+              alt="หน้าบอส Lucid ใน MapleStory M โดยเลือกความยาก Chaos"
+              width="601"
+              height="336"
+              decoding="async"
+          /></a>
+          <figcaption>
+            หน้าบอส Chaos Lucid · ภาพจาก Nexon Patch Notes วันที่ 28 สิงหาคม
+            2025 <a href="#sources">แหล่งอ้างอิงภาพ</a>
+          </figcaption>
         </figure>
-        <p>Phase 1 มังกรปรากฏซ้ายหรือขวาแล้วพ่นไฟด้านหน้า ดูตำแหน่งมังกรและหลบแนวไฟก่อนกลับไปโจมตี</p>
-        <p class="sub">แผนทีม: คอลฝั่งที่มังกรเกิดทันที อย่ายืนตีต่อในแนวพ่นไฟ</p>
-      </article>
-      <article class="card">
-        <h3>เกจ 0/30 → แยกหน้าที่สองเสา</h3>
-        <p><strong>เสาซ้าย (สีเหลือง):</strong> รีเซ็ตเกจกลับเป็น 0/30<br><strong>เสาขวา (สีม่วง):</strong> ล้างผีเสื้อสีม่วงทั้งหมดในแผนที่</p>
-        <p class="sub">Phase 1 เกจเต็ม = ตายทันที · Phase 2 เกจเต็ม = เข้าสู่มินิเกมลอยหลบบอล</p>
-      </article>
-      <article class="card">
-        <h3>ข้อเปลี่ยนแปลงปี 2026</h3>
-        <p>Patch วันที่ 21 พฤษภาคม 2026 ปรับให้ชาร์จ Trumpet Statue ระหว่าง Invincibility ได้ และ Charge ของ Chaos Lucid ใน Phase 2 เปลี่ยนจาก instant kill เป็น fixed damage</p>
-        <p class="sub">ยังควรหลบ Charge และดู HP เสมอ <a href="#sources">อ่าน Patch อ้างอิง</a></p>
-      </article>
-    </div>
-  </section>
+      </header>
 
-  <section id="phase1" aria-labelledby="phase1-h">
-    <div><p class="label">Phase 1</p><h2 id="phase1-h">ระวังเกจเต็ม 30/30</h2></div>
-    <article class="card">
-      <h3>ระบบสะสมเกจ (0/30)</h3>
-      <figure class="guide-figure guide-sprite">
-        <a href="img/clucid/purple-butterfly.png" target="_blank" rel="noopener" aria-label="ดูภาพผีเสื้อสีม่วงขนาดเต็ม (เปิดแท็บใหม่)"><img src="img/clucid/purple-butterfly.png" alt="Purple Nightmare Butterfly สีม่วงที่ต้องหลีกเลี่ยงการโดนโจมตี" width="78" height="69" loading="lazy" decoding="async"></a>
-        <figcaption>Purple Nightmare Butterfly · ผีเสื้อสีม่วง</figcaption>
-      </figure>
-      <ul>
-        <li><strong>เวลาที่ผ่านไป:</strong> ทุก ๆ 2 วินาที เกจเพิ่ม +1</li>
-        <li><strong>ผีเสื้อสีม่วง:</strong> เมื่อโดนโจมตี เกจเพิ่ม +1 ต่อ Hit</li>
-        <li><strong>โกเล็มในแผนที่:</strong> โกเล็มแต่ละตัวทำให้เกจเพิ่มอีก +1 ทุก ๆ 2 วินาที</li>
-      </ul>
-      <p><strong>สูตร:</strong> เกจที่เพิ่มทุก 2 วินาที = 1 + จำนวนโกเล็ม</p>
-      <div class="table-scroll" role="region" aria-label="ตัวอย่างเกจที่เพิ่มทุก 2 วินาที" tabindex="0">
-        <table>
-          <caption>ตัวอย่างเกจที่เพิ่มทุก ๆ 2 วินาที</caption>
-          <thead><tr><th scope="col">จำนวนโกเล็ม</th><th scope="col">เกจที่เพิ่ม</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">0 ตัว</th><td>+1</td></tr>
-            <tr><th scope="row">1 ตัว</th><td>+2</td></tr>
-            <tr><th scope="row">2 ตัว</th><td>+3</td></tr>
-            <tr><th scope="row">3 ตัว</th><td>+4</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="sub">ไม่รวมเกจที่เพิ่มจากการโดนผีเสื้อสีม่วงโจมตี</p>
-    </article>
-    <article class="card">
-      <h3>วิธีจัดการเกจและผีเสื้อ</h3>
-      <div class="info-grid">
-        <figure class="guide-figure guide-sprite">
-          <a href="img/clucid/yellow-statue.png" target="_blank" rel="noopener" aria-label="ดูภาพเสาสีเหลืองขนาดเต็ม (เปิดแท็บใหม่)"><img src="img/clucid/yellow-statue.png" alt="Trumpet Statue สีเหลือง เสาซ้ายสำหรับรีเซ็ตเกจ" width="276" height="228" loading="lazy" decoding="async"></a>
-          <figcaption><strong>เสาซ้าย · สีเหลือง</strong><br>รีเซ็ตเกจกลับเป็น 0/30</figcaption>
-        </figure>
-        <figure class="guide-figure guide-sprite">
-          <a href="img/clucid/purple-statue.png" target="_blank" rel="noopener" aria-label="ดูภาพเสาสีม่วงขนาดเต็ม (เปิดแท็บใหม่)"><img src="img/clucid/purple-statue.png" alt="Trumpet Statue สีม่วง เสาขวาสำหรับล้างผีเสื้อสีม่วง" width="259" height="209" loading="lazy" decoding="async"></a>
-          <figcaption><strong>เสาขวา · สีม่วง</strong><br>ล้างผีเสื้อสีม่วงทั้งหมดในแผนที่</figcaption>
-        </figure>
-      </div>
-      <ul>
-        <li><strong>เสาซ้าย (สีเหลือง):</strong> รีเซ็ตเกจกลับเป็น 0/30</li>
-        <li><strong>เสาขวา (สีม่วง):</strong> ล้างผีเสื้อสีม่วงทั้งหมดในแผนที่</li>
-      </ul>
-      <p class="gauge-alert"><strong>เมื่อเกจเต็ม 30/30 ตัวละครจะตายทันที</strong></p>
-      <p>รีเซ็ตเกจก่อนเต็ม กำจัดโกเล็ม และหลีกเลี่ยงการโดนผีเสื้อสีม่วงโจมตี</p>
-    </article>
-    <article class="card">
-      <h3>ลำดับการเล่นที่แนะนำ</h3>
-      <ol>
-        <li>เริ่มโจมตีพร้อมทีม แต่เว้นจังหวะอ่านคำเตือนและดูพื้นที่หลบ</li>
-        <li>เมื่อ Bomb มา ให้กลับจุดนัดและรวมกับสมาชิก</li>
-        <li>เมื่อ Dragon มา ให้ดูฝั่งมังกรแล้วหลบไฟก่อนทำ DPS ต่อ</li>
-        <li>คุมเกจด้วยเสาเหลืองและล้างผีเสื้อด้วยเสาม่วง พร้อมคอลให้ตัวสำรองช่วยเมื่อเข้าไปจัดการเสาไม่ได้</li>
-      </ol>
-    </article>
-  </section>
+      <nav aria-label="หัวข้อคู่มือ">
+        <a href="./#bosses">Boss guides</a>
+        <a href="#prep">เตรียมทีม</a>
+        <a href="#mechanics">Mechanics</a>
+        <a href="#phase1">Phase 1</a>
+        <a href="#phase2">Phase 2</a>
+        <a href="#comparison">เทียบ Phase</a>
+        <a href="#phase3">Phase 3</a>
+        <a href="#sources">แหล่งอ้างอิง</a>
+      </nav>
 
-  <section id="phase2" aria-labelledby="phase2-h">
-    <div><p class="label">Phase 2</p><h2 id="phase2-h">เกจเต็มจะเข้าสู่มินิเกม</h2></div>
-    <article class="card">
-      <h3>ลำดับสกิลโดยคร่าว ๆ</h3>
-      <ol class="skill-sequence" aria-label="ลำดับสกิล Phase 2">
-        <li><strong>Fairy Dust</strong>
-          <figure class="guide-figure">
-            <a href="img/clucid/fairy-dust.png" target="_blank" rel="noopener" aria-label="Fairy Dust (full size, opens in a new tab)"><img src="img/clucid/fairy-dust.png" alt="Lucid: Fairy Dust" width="619" height="534" loading="lazy" decoding="async"></a>
+      <section id="prep" aria-labelledby="prep-h">
+        <div>
+          <p class="label">Before the run</p>
+          <h2 id="prep-h">เตรียมทีมก่อนเข้า</h2>
+        </div>
+        <article class="card">
+          <h3>แผนแนะนำสำหรับปาร์ตี้</h3>
+          <ul>
+            <li>กำหนดคนคอล Mechanics และจุดรวมรับ Bomb ให้ทุกคนเข้าใจตรงกัน</li>
+            <li>
+              มอบหมายคนดูเสาซ้ายสีเหลืองสำหรับรีเซ็ตเกจ
+              และเสาขวาสีม่วงสำหรับล้างผีเสื้อ พร้อมตัวสำรอง
+            </li>
+            <li>
+              เช็ก Buff, Potion และสกิลเอาตัวรอด วางแผนเก็บ Burst สำหรับ Phase 3
+            </li>
+            <li>เช็กเงื่อนไขเข้าและเวลาในหน้าบอสของเกมก่อนเริ่ม</li>
+          </ul>
+        </article>
+        <p class="sub">
+          คู่มือนี้สำหรับ MapleStory M Global แบบปาร์ตี้
+          แผนการยืนและหน้าที่เป็นข้อเสนอแนะให้ทีมปรับใช้; Solo มีวิธีรับ Bomb
+          ต่างออกไป
+        </p>
+      </section>
+
+      <section id="mechanics" aria-labelledby="mechanics-h">
+        <div>
+          <p class="label">Quick reference</p>
+          <h2 id="mechanics-h">Mechanics ที่ต้องรู้</h2>
+        </div>
+        <div class="info-grid">
+          <article class="card">
+            <h3>Bomb → รวมตามจุดนัด</h3>
+            <p>
+              Bomb ติดทุกคนและระเบิดหลังเวลาหน่วง
+              ความเสียหายลดลงเมื่อมีสมาชิกอยู่ใกล้ ใช้ Dispel หรือ All-Cure
+              Potion ลบไม่ได้
+            </p>
+            <p class="sub">แผนทีม: คอล “Bomb รวม” และรักษา HP ก่อนระเบิด</p>
+          </article>
+          <article class="card">
+            <h3>Dragon → ดูฝั่งก่อนย้าย</h3>
+            <figure class="guide-figure">
+              <a
+                href="img/clucid/dragon.png"
+                target="_blank"
+                rel="noopener"
+                aria-label="ดูภาพ Dragon ขนาดเต็ม (เปิดแท็บใหม่)"
+                ><img
+                  src="img/clucid/dragon.png"
+                  alt="มังกรสีเขียวของ Lucid ขณะใช้ Summon Dragon"
+                  width="392"
+                  height="292"
+                  loading="lazy"
+                  decoding="async"
+              /></a>
+              <figcaption>
+                Summon Dragon · ดูฝั่งที่มังกรเกิดก่อนหลบแนวไฟ
+              </figcaption>
+            </figure>
+            <p>
+              Phase 1 มังกรปรากฏซ้ายหรือขวาแล้วพ่นไฟด้านหน้า
+              ดูตำแหน่งมังกรและหลบแนวไฟก่อนกลับไปโจมตี
+            </p>
+            <p class="sub">
+              แผนทีม: คอลฝั่งที่มังกรเกิดทันที อย่ายืนตีต่อในแนวพ่นไฟ
+            </p>
+          </article>
+          <article class="card">
+            <h3>เกจ 0/30 → แยกหน้าที่สองเสา</h3>
+            <p>
+              <strong>เสาซ้าย (สีเหลือง):</strong> รีเซ็ตเกจกลับเป็น 0/30<br /><strong
+                >เสาขวา (สีม่วง):</strong
+              >
+              ล้างผีเสื้อสีม่วงทั้งหมดในแผนที่
+            </p>
+            <p class="sub">
+              Phase 1 เกจเต็ม = ตายทันที · Phase 2 เกจเต็ม =
+              เข้าสู่มินิเกมลอยหลบบอล
+            </p>
+          </article>
+          <article class="card">
+            <h3>ข้อเปลี่ยนแปลงปี 2026</h3>
+            <p>
+              Patch วันที่ 21 พฤษภาคม 2026 ปรับให้ชาร์จ Trumpet Statue ระหว่าง
+              Invincibility ได้ และ Charge ของ Chaos Lucid ใน Phase 2 เปลี่ยนจาก
+              instant kill เป็น fixed damage
+            </p>
+            <p class="sub">
+              ยังควรหลบ Charge และดู HP เสมอ
+              <a href="#sources">อ่าน Patch อ้างอิง</a>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="phase1" aria-labelledby="phase1-h">
+        <div>
+          <p class="label">Phase 1</p>
+          <h2 id="phase1-h">ระวังเกจเต็ม 30/30</h2>
+        </div>
+        <article class="card">
+          <h3>ระบบสะสมเกจ (0/30)</h3>
+          <figure class="guide-figure guide-sprite">
+            <a
+              href="img/clucid/purple-butterfly.png"
+              target="_blank"
+              rel="noopener"
+              aria-label="ดูภาพผีเสื้อสีม่วงขนาดเต็ม (เปิดแท็บใหม่)"
+              ><img
+                src="img/clucid/purple-butterfly.png"
+                alt="Purple Nightmare Butterfly สีม่วงที่ต้องหลีกเลี่ยงการโดนโจมตี"
+                width="78"
+                height="69"
+                loading="lazy"
+                decoding="async"
+            /></a>
+            <figcaption>Purple Nightmare Butterfly · ผีเสื้อสีม่วง</figcaption>
           </figure>
-        </li>
-        <li><strong>Charge</strong>
-          <figure class="guide-figure">
-            <a href="img/clucid/charge.png" target="_blank" rel="noopener" aria-label="Charge (full size, opens in a new tab)"><img src="img/clucid/charge.png" alt="Lucid: Charge" width="377" height="445" loading="lazy" decoding="async"></a>
-          </figure>
-        </li>
-        <li><strong>Fairy Dust</strong>
-          <figure class="guide-figure">
-            <a href="img/clucid/fairy-dust.png" target="_blank" rel="noopener" aria-label="Fairy Dust (full size, opens in a new tab)"><img src="img/clucid/fairy-dust.png" alt="Lucid: Fairy Dust" width="619" height="534" loading="lazy" decoding="async"></a>
-          </figure>
-        </li>
-        <li><strong>Fairy Dust</strong>
-          <figure class="guide-figure">
-            <a href="img/clucid/fairy-dust.png" target="_blank" rel="noopener" aria-label="Fairy Dust (full size, opens in a new tab)"><img src="img/clucid/fairy-dust.png" alt="Lucid: Fairy Dust" width="619" height="534" loading="lazy" decoding="async"></a>
-          </figure>
-        </li>
-        <li><strong>Laser Streak + Bomb (มาพร้อมกัน)</strong>
-          <figure class="guide-figure">
-            <a href="img/clucid/laser-streak.png" target="_blank" rel="noopener" aria-label="Laser Streak (full size, opens in a new tab)"><img src="img/clucid/laser-streak.png" alt="Lucid: Laser Streak" width="642" height="504" loading="lazy" decoding="async"></a>
-          </figure>
-        </li>
-      </ol>
-      <p class="sub">ภาพ Fairy Dust, Charge และ Laser Streak จาก <a href="https://forum.nexon.com/MapleStoryMGlobal/board_view?allBoard=1&amp;thread=2518143">Nexon Patch Notes · 7 มีนาคม 2024</a> · คลิกภาพเพื่อดูขนาดเต็ม</p>
-      <p class="gauge-alert"><strong>Phase 2: Bomb และ Laser Streak มาพร้อมกัน</strong> เตรียมรับมือทั้งสอง Mechanics ในจังหวะเดียวกัน</p>
-      <p>เมื่อจบ Laser Streak + Bomb จะวนกลับไปเริ่มที่ Fairy Dust และเล่นลำดับเดิมซ้ำ</p>
-      <p class="gauge-alert"><strong>ถ้าเข้ามินิเกม ให้เริ่มนับลำดับใหม่หลังจบมินิเกม โดยเริ่มจาก Fairy Dust</strong></p>
-      <p class="sub">ลำดับนี้เป็นแนวทางคร่าว ๆ จากข้อมูลกิลด์ ให้ดูสัญญาณเตือนบนหน้าจอประกอบ</p>
-    </article>
-    <article class="card">
-      <h3>ระบบสะสมเกจ (0/30)</h3>
-      <p>ใช้ระบบเดียวกับ Phase 1:</p>
-      <ul>
-        <li>ทุก ๆ 2 วินาที เกจเพิ่ม +1</li>
-        <li>โดนผีเสื้อสีม่วง เกจเพิ่ม +1 ต่อ Hit</li>
-        <li>โกเล็มแต่ละตัวเพิ่มเกจอีก +1 ทุก ๆ 2 วินาที</li>
-      </ul>
-      <p><strong>เสาซ้าย (สีเหลือง):</strong> รีเซ็ตเกจกลับเป็น 0/30<br><strong>เสาขวา (สีม่วง):</strong> ล้างผีเสื้อสีม่วงทั้งหมดในแผนที่</p>
-    </article>
-    <article class="card">
-      <h3>เมื่อเกจเต็ม 30/30</h3>
-      <figure class="guide-figure">
-        <a href="img/clucid/illusion-barrage.png" target="_blank" rel="noopener" aria-label="ดูภาพ Illusion Barrage ขนาดเต็ม (เปิดแท็บใหม่)"><img src="img/clucid/illusion-barrage.png" alt="Lucid พร้อมผีเสื้อและลูกบอลสีม่วงในท่า Nightmare Butterfly และ Illusion Barrage" width="652" height="364" loading="lazy" decoding="async"></a>
-        <figcaption>ภาพท่า Nightmare Butterfly &amp; Illusion Barrage จาก Patch Notes · ใช้ประกอบหัวข้อมินิเกมหลบบอล</figcaption>
-      </figure>
-      <p class="gauge-alert"><strong>เข้าสู่มินิเกมลอยหลบบอล แทนการตายทันที</strong></p>
-      <ul>
-        <li>ตัวละครจะลอยอยู่บริเวณกลางหน้าจอ</li>
-        <li>ผู้เล่นต้องบังคับตัวละครเพื่อหลบบอลด้วยตัวเอง</li>
-      </ul>
-    </article>
-    <article class="card">
-      <h3>เอาตัวรอดก่อนเร่ง Damage</h3>
-      <figure class="guide-figure guide-sprite">
-        <a href="img/clucid/nightmare-butterfly.png" target="_blank" rel="noopener" aria-label="ดูภาพ Nightmare Butterfly ขนาดเต็ม (เปิดแท็บใหม่)"><img src="img/clucid/nightmare-butterfly.png" alt="Nightmare Butterfly สีม่วงพร้อมลูกบอลโจมตี" width="342" height="150" loading="lazy" decoding="async"></a>
-        <figcaption>Nightmare Butterfly และลูกบอลโจมตี</figcaption>
-      </figure>
-      <ul>
-        <li>ติดตามตำแหน่ง Lucid และสัญญาณเตือน อย่าไล่โจมตีจนพลาด Bomb หรือ Charge</li>
-        <li>กำหนดจุดรวม Bomb ของ Phase นี้ใหม่ให้ชัดเจน และเตรียมรับมือ Laser Streak ที่มาพร้อมกัน</li>
-        <li>ดูแลทั้งสองเสาต่อเนื่อง พร้อมกำจัดโกเล็มเพื่อลดอัตราสะสมเกจ</li>
-        <li>เมื่อเกจเต็มและเข้าสู่มินิเกม ให้บังคับหลบบอลด้วยตัวเอง แล้วกลับมาตั้งทีมเมื่อจบ</li>
-        <li>ก่อนจบ Phase ให้คนคอลเช็ก Burst และ Buff ของทีมเพื่อเข้า Phase 3 พร้อมกัน</li>
-      </ul>
-    </article>
-  </section>
+          <ul>
+            <li><strong>เวลาที่ผ่านไป:</strong> ทุก ๆ 2 วินาที เกจเพิ่ม +1</li>
+            <li>
+              <strong>ผีเสื้อสีม่วง:</strong> เมื่อโดนโจมตี เกจเพิ่ม +1 ต่อ Hit
+            </li>
+            <li>
+              <strong>โกเล็มในแผนที่:</strong> โกเล็มแต่ละตัวทำให้เกจเพิ่มอีก +1
+              ทุก ๆ 2 วินาที
+            </li>
+          </ul>
+          <p>
+            <strong>สูตร:</strong> เกจที่เพิ่มทุก 2 วินาที = 1 + จำนวนโกเล็ม
+          </p>
+          <div
+            class="table-scroll"
+            role="region"
+            aria-label="ตัวอย่างเกจที่เพิ่มทุก 2 วินาที"
+            tabindex="0">
+            <table>
+              <caption>
+                ตัวอย่างเกจที่เพิ่มทุก ๆ 2 วินาที
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">จำนวนโกเล็ม</th>
+                  <th scope="col">เกจที่เพิ่ม</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">0 ตัว</th>
+                  <td>+1</td>
+                </tr>
+                <tr>
+                  <th scope="row">1 ตัว</th>
+                  <td>+2</td>
+                </tr>
+                <tr>
+                  <th scope="row">2 ตัว</th>
+                  <td>+3</td>
+                </tr>
+                <tr>
+                  <th scope="row">3 ตัว</th>
+                  <td>+4</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="sub">ไม่รวมเกจที่เพิ่มจากการโดนผีเสื้อสีม่วงโจมตี</p>
+        </article>
+        <article class="card">
+          <h3>วิธีจัดการเกจและผีเสื้อ</h3>
+          <div class="info-grid">
+            <figure class="guide-figure guide-sprite">
+              <a
+                href="img/clucid/yellow-statue.png"
+                target="_blank"
+                rel="noopener"
+                aria-label="ดูภาพเสาสีเหลืองขนาดเต็ม (เปิดแท็บใหม่)"
+                ><img
+                  src="img/clucid/yellow-statue.png"
+                  alt="Trumpet Statue สีเหลือง เสาซ้ายสำหรับรีเซ็ตเกจ"
+                  width="276"
+                  height="228"
+                  loading="lazy"
+                  decoding="async"
+              /></a>
+              <figcaption>
+                <strong>เสาซ้าย · สีเหลือง</strong><br />รีเซ็ตเกจกลับเป็น 0/30
+              </figcaption>
+            </figure>
+            <figure class="guide-figure guide-sprite">
+              <a
+                href="img/clucid/purple-statue.png"
+                target="_blank"
+                rel="noopener"
+                aria-label="ดูภาพเสาสีม่วงขนาดเต็ม (เปิดแท็บใหม่)"
+                ><img
+                  src="img/clucid/purple-statue.png"
+                  alt="Trumpet Statue สีม่วง เสาขวาสำหรับล้างผีเสื้อสีม่วง"
+                  width="259"
+                  height="209"
+                  loading="lazy"
+                  decoding="async"
+              /></a>
+              <figcaption>
+                <strong>เสาขวา · สีม่วง</strong
+                ><br />ล้างผีเสื้อสีม่วงทั้งหมดในแผนที่
+              </figcaption>
+            </figure>
+          </div>
+          <ul>
+            <li><strong>เสาซ้าย (สีเหลือง):</strong> รีเซ็ตเกจกลับเป็น 0/30</li>
+            <li>
+              <strong>เสาขวา (สีม่วง):</strong> ล้างผีเสื้อสีม่วงทั้งหมดในแผนที่
+            </li>
+          </ul>
+          <p class="gauge-alert">
+            <strong>เมื่อเกจเต็ม 30/30 ตัวละครจะตายทันที</strong>
+          </p>
+          <p>
+            รีเซ็ตเกจก่อนเต็ม กำจัดโกเล็ม และหลีกเลี่ยงการโดนผีเสื้อสีม่วงโจมตี
+          </p>
+        </article>
+        <article class="card">
+          <h3>ลำดับการเล่นที่แนะนำ</h3>
+          <ol>
+            <li>เริ่มโจมตีพร้อมทีม แต่เว้นจังหวะอ่านคำเตือนและดูพื้นที่หลบ</li>
+            <li>เมื่อ Bomb มา ให้กลับจุดนัดและรวมกับสมาชิก</li>
+            <li>เมื่อ Dragon มา ให้ดูฝั่งมังกรแล้วหลบไฟก่อนทำ DPS ต่อ</li>
+            <li>
+              คุมเกจด้วยเสาเหลืองและล้างผีเสื้อด้วยเสาม่วง
+              พร้อมคอลให้ตัวสำรองช่วยเมื่อเข้าไปจัดการเสาไม่ได้
+            </li>
+          </ol>
+        </article>
+      </section>
 
-  <section id="comparison" aria-labelledby="comparison-h">
-    <div><p class="label">Phase comparison</p><h2 id="comparison-h">ความแตกต่างสำคัญระหว่าง Phase</h2></div>
-    <article class="card">
-      <h3>ระบบเดียวกัน แต่ผลเมื่อเกจเต็มต่างกัน</h3>
-      <div class="table-scroll" role="region" aria-label="ตารางเปรียบเทียบ Phase 1 และ Phase 2" tabindex="0">
-        <table>
-          <caption>เปรียบเทียบระบบเกจและหน้าที่เสา</caption>
-          <thead><tr><th scope="col">เงื่อนไข</th><th scope="col">Phase 1</th><th scope="col">Phase 2</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">เกจสะสม</th><td>0/30</td><td>0/30</td></tr>
-            <tr><th scope="row">วิธีเพิ่มเกจ</th><td>เวลา, ผีเสื้อสีม่วง, โกเล็ม</td><td>เหมือน Phase 1</td></tr>
-            <tr><th scope="row">เสาเหลือง</th><td>รีเซ็ตเกจ</td><td>รีเซ็ตเกจ</td></tr>
-            <tr><th scope="row">เสาม่วง</th><td>ล้างผีเสื้อ</td><td>ล้างผีเสื้อ</td></tr>
-            <tr><th scope="row">เกจเต็ม 30/30</th><td><strong>ตายทันที</strong></td><td><strong>เข้าสู่มินิเกมหลบบอล</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p><strong>จำง่าย ๆ:</strong> Phase 1 เกจเต็ม = ตาย · Phase 2 เกจเต็ม = มินิเกมหลบบอล</p>
-    </article>
-  </section>
+      <section id="phase2" aria-labelledby="phase2-h">
+        <div>
+          <p class="label">Phase 2</p>
+          <h2 id="phase2-h">เกจเต็มจะเข้าสู่มินิเกม</h2>
+        </div>
+        <article class="card">
+          <h3>ลำดับสกิลโดยคร่าว ๆ</h3>
+          <ol class="skill-sequence" aria-label="ลำดับสกิล Phase 2">
+            <li>
+              <strong>Fairy Dust</strong>
+              <figure class="guide-figure">
+                <a
+                  href="img/clucid/fairy-dust.png"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Fairy Dust (full size, opens in a new tab)"
+                  ><img
+                    src="img/clucid/fairy-dust.png"
+                    alt="Lucid: Fairy Dust"
+                    width="619"
+                    height="534"
+                    loading="lazy"
+                    decoding="async"
+                /></a>
+              </figure>
+            </li>
+            <li>
+              <strong>Charge</strong>
+              <figure class="guide-figure">
+                <a
+                  href="img/clucid/charge.png"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Charge (full size, opens in a new tab)"
+                  ><img
+                    src="img/clucid/charge.png"
+                    alt="Lucid: Charge"
+                    width="377"
+                    height="445"
+                    loading="lazy"
+                    decoding="async"
+                /></a>
+              </figure>
+            </li>
+            <li>
+              <strong>Fairy Dust</strong>
+              <figure class="guide-figure">
+                <a
+                  href="img/clucid/fairy-dust.png"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Fairy Dust (full size, opens in a new tab)"
+                  ><img
+                    src="img/clucid/fairy-dust.png"
+                    alt="Lucid: Fairy Dust"
+                    width="619"
+                    height="534"
+                    loading="lazy"
+                    decoding="async"
+                /></a>
+              </figure>
+            </li>
+            <li>
+              <strong>Fairy Dust</strong>
+              <figure class="guide-figure">
+                <a
+                  href="img/clucid/fairy-dust.png"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Fairy Dust (full size, opens in a new tab)"
+                  ><img
+                    src="img/clucid/fairy-dust.png"
+                    alt="Lucid: Fairy Dust"
+                    width="619"
+                    height="534"
+                    loading="lazy"
+                    decoding="async"
+                /></a>
+              </figure>
+            </li>
+            <li>
+              <strong>Laser Streak + Bomb (มาพร้อมกัน)</strong>
+              <figure class="guide-figure">
+                <a
+                  href="img/clucid/laser-streak.png"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Laser Streak (full size, opens in a new tab)"
+                  ><img
+                    src="img/clucid/laser-streak.png"
+                    alt="Lucid: Laser Streak"
+                    width="642"
+                    height="504"
+                    loading="lazy"
+                    decoding="async"
+                /></a>
+              </figure>
+            </li>
+          </ol>
+          <p class="sub">
+            ภาพ Fairy Dust, Charge และ Laser Streak จาก
+            <a
+              href="https://forum.nexon.com/MapleStoryMGlobal/board_view?allBoard=1&amp;thread=2518143"
+              >Nexon Patch Notes · 7 มีนาคม 2024</a
+            >
+            · คลิกภาพเพื่อดูขนาดเต็ม
+          </p>
+          <p class="gauge-alert">
+            <strong>Phase 2: Bomb และ Laser Streak มาพร้อมกัน</strong>
+            เตรียมรับมือทั้งสอง Mechanics ในจังหวะเดียวกัน
+          </p>
+          <p>
+            เมื่อจบ Laser Streak + Bomb จะวนกลับไปเริ่มที่ Fairy Dust
+            และเล่นลำดับเดิมซ้ำ
+          </p>
+          <p class="gauge-alert">
+            <strong
+              >ถ้าเข้ามินิเกม ให้เริ่มนับลำดับใหม่หลังจบมินิเกม โดยเริ่มจาก
+              Fairy Dust</strong
+            >
+          </p>
+          <p class="sub">
+            ลำดับนี้เป็นแนวทางคร่าว ๆ ให้ดูสัญญาณเตือนบนหน้าจอประกอบ
+          </p>
+        </article>
+        <article class="card">
+          <h3>ระบบสะสมเกจ (0/30)</h3>
+          <p>ใช้ระบบเดียวกับ Phase 1:</p>
+          <ul>
+            <li>ทุก ๆ 2 วินาที เกจเพิ่ม +1</li>
+            <li>โดนผีเสื้อสีม่วง เกจเพิ่ม +1 ต่อ Hit</li>
+            <li>โกเล็มแต่ละตัวเพิ่มเกจอีก +1 ทุก ๆ 2 วินาที</li>
+          </ul>
+          <p>
+            <strong>เสาซ้าย (สีเหลือง):</strong> รีเซ็ตเกจกลับเป็น 0/30<br /><strong
+              >เสาขวา (สีม่วง):</strong
+            >
+            ล้างผีเสื้อสีม่วงทั้งหมดในแผนที่
+          </p>
+        </article>
+        <article class="card">
+          <h3>เมื่อเกจเต็ม 30/30</h3>
+          <figure class="guide-figure">
+            <a
+              href="img/clucid/illusion-barrage.png"
+              target="_blank"
+              rel="noopener"
+              aria-label="ดูภาพ Illusion Barrage ขนาดเต็ม (เปิดแท็บใหม่)"
+              ><img
+                src="img/clucid/illusion-barrage.png"
+                alt="Lucid พร้อมผีเสื้อและลูกบอลสีม่วงในท่า Nightmare Butterfly และ Illusion Barrage"
+                width="652"
+                height="364"
+                loading="lazy"
+                decoding="async"
+            /></a>
+            <figcaption>
+              ภาพท่า Nightmare Butterfly &amp; Illusion Barrage จาก Patch Notes
+              · ใช้ประกอบหัวข้อมินิเกมหลบบอล
+            </figcaption>
+          </figure>
+          <p class="gauge-alert">
+            <strong>เข้าสู่มินิเกมลอยหลบบอล แทนการตายทันที</strong>
+          </p>
+          <ul>
+            <li>ตัวละครจะลอยอยู่บริเวณกลางหน้าจอ</li>
+            <li>ผู้เล่นต้องบังคับตัวละครเพื่อหลบบอลด้วยตัวเอง</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>เอาตัวรอดก่อนเร่ง Damage</h3>
+          <figure class="guide-figure guide-sprite">
+            <a
+              href="img/clucid/nightmare-butterfly.png"
+              target="_blank"
+              rel="noopener"
+              aria-label="ดูภาพ Nightmare Butterfly ขนาดเต็ม (เปิดแท็บใหม่)"
+              ><img
+                src="img/clucid/nightmare-butterfly.png"
+                alt="Nightmare Butterfly สีม่วงพร้อมลูกบอลโจมตี"
+                width="342"
+                height="150"
+                loading="lazy"
+                decoding="async"
+            /></a>
+            <figcaption>Nightmare Butterfly และลูกบอลโจมตี</figcaption>
+          </figure>
+          <ul>
+            <li>
+              ติดตามตำแหน่ง Lucid และสัญญาณเตือน อย่าไล่โจมตีจนพลาด Bomb หรือ
+              Charge
+            </li>
+            <li>
+              กำหนดจุดรวม Bomb ของ Phase นี้ใหม่ให้ชัดเจน และเตรียมรับมือ Laser
+              Streak ที่มาพร้อมกัน
+            </li>
+            <li>ดูแลทั้งสองเสาต่อเนื่อง พร้อมกำจัดโกเล็มเพื่อลดอัตราสะสมเกจ</li>
+            <li>
+              เมื่อเกจเต็มและเข้าสู่มินิเกม ให้บังคับหลบบอลด้วยตัวเอง
+              แล้วกลับมาตั้งทีมเมื่อจบ
+            </li>
+            <li>
+              ก่อนจบ Phase ให้คนคอลเช็ก Burst และ Buff ของทีมเพื่อเข้า Phase 3
+              พร้อมกัน
+            </li>
+          </ul>
+        </article>
+      </section>
 
-  <section id="phase3" aria-labelledby="phase3-h">
-    <div><p class="label">Phase 3</p><h2 id="phase3-h">เตรียม Burst ให้พร้อม</h2></div>
-    <article class="card">
-      <h3>แผนปิดบอส</h3>
-      <p>Phase 3 มีเวลาจำกัด ให้ดู Countdown บน Boss UI เป็นหลัก คนคอลนัดใช้ Buff และ Burst พร้อมกัน แล้วรักษา Damage ต่อเนื่องจนจบ</p>
-      <p class="sub">ถ้าเวลาในรันเหลือน้อยกว่าเวลาจำกัดของ Phase ตัวจับเวลาจะปรับตามเวลาที่เหลือ อย่าเข้าช่วงท้ายโดยที่สกิลหลักยังไม่พร้อม</p>
-    </article>
-  </section>
+      <section id="comparison" aria-labelledby="comparison-h">
+        <div>
+          <p class="label">Phase comparison</p>
+          <h2 id="comparison-h">ความแตกต่างสำคัญระหว่าง Phase</h2>
+        </div>
+        <article class="card">
+          <h3>ระบบเดียวกัน แต่ผลเมื่อเกจเต็มต่างกัน</h3>
+          <div
+            class="table-scroll"
+            role="region"
+            aria-label="ตารางเปรียบเทียบ Phase 1 และ Phase 2"
+            tabindex="0">
+            <table>
+              <caption>
+                เปรียบเทียบระบบเกจและหน้าที่เสา
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">เงื่อนไข</th>
+                  <th scope="col">Phase 1</th>
+                  <th scope="col">Phase 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">เกจสะสม</th>
+                  <td>0/30</td>
+                  <td>0/30</td>
+                </tr>
+                <tr>
+                  <th scope="row">วิธีเพิ่มเกจ</th>
+                  <td>เวลา, ผีเสื้อสีม่วง, โกเล็ม</td>
+                  <td>เหมือน Phase 1</td>
+                </tr>
+                <tr>
+                  <th scope="row">เสาเหลือง</th>
+                  <td>รีเซ็ตเกจ</td>
+                  <td>รีเซ็ตเกจ</td>
+                </tr>
+                <tr>
+                  <th scope="row">เสาม่วง</th>
+                  <td>ล้างผีเสื้อ</td>
+                  <td>ล้างผีเสื้อ</td>
+                </tr>
+                <tr>
+                  <th scope="row">เกจเต็ม 30/30</th>
+                  <td><strong>ตายทันที</strong></td>
+                  <td><strong>เข้าสู่มินิเกมหลบบอล</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            <strong>จำง่าย ๆ:</strong> Phase 1 เกจเต็ม = ตาย · Phase 2 เกจเต็ม =
+            มินิเกมหลบบอล
+          </p>
+        </article>
+      </section>
 
-  <section id="sources" aria-labelledby="sources-h">
-    <div><p class="label">References</p><h2 id="sources-h">แหล่งอ้างอิง</h2></div>
-    <article class="card">
-      <h3>Guild mechanics notes</h3>
-      <p>รายละเอียดเกจ 0/30 สูตรสะสมเกจ หน้าที่เสาสีเหลืองและสีม่วง ผลเมื่อเกจเต็มใน Phase 1–2 และลำดับสกิล Phase 2 ใช้ข้อมูลที่สมาชิกกิลด์ส่งให้เมื่อ 5 พฤศจิกายน 2026</p>
-    </article>
-    <article class="card">
-      <h3>Official MapleStory M Global Patch Notes</h3>
-      <p>ภาพประกอบในหน้านี้มาจาก Nexon Patch Notes วันที่ 7 มีนาคม 2024 (Fairy Dust, Charge, Laser Streak) และ 28 สิงหาคม 2025 (ภาพบอสและ Mechanics อื่น ๆ) คลิกภาพเพื่อเปิดขนาดเต็มในแท็บใหม่</p>
-      <ul>
-        <li><a href="https://forum.nexon.com/MapleStoryMGlobal/board_view?allBoard=1&amp;thread=2518143">7 Mar 2024 · Commander Lucid: Bomb และ Dragon</a></li>
-        <li><a href="https://forum.nexon.com/MapleStoryMGlobal/board_view?allBoard=1&amp;board=2690&amp;thread=3115950">28 Aug 2025 · Chaos Lucid: Butterflies, Statue และ Special pattern</a></li>
-        <li><a href="https://forum.nexon.com/MapleStoryMGlobal/board_view?board=2690&amp;thread=3448821">21 May 2026 · Statue, Charge และ Phase 3 UI improvements</a></li>
-      </ul>
-      <p class="sub">ตรวจแหล่งอ้างอิงเมื่อ 5 พฤศจิกายน 2026 ข้อมูลอาจเปลี่ยนตาม Patch; ใช้คำเตือนและเงื่อนไขในเกมประกอบทุกครั้ง</p>
-    </article>
-  </section>
+      <section id="phase3" aria-labelledby="phase3-h">
+        <div>
+          <p class="label">Phase 3</p>
+          <h2 id="phase3-h">เตรียม Burst ให้พร้อม</h2>
+        </div>
+        <article class="card">
+          <h3>แผนปิดบอส</h3>
+          <p>
+            Phase 3 มีเวลาจำกัด ให้ดู Countdown บน Boss UI เป็นหลัก คนคอลนัดใช้
+            Buff และ Burst พร้อมกัน แล้วรักษา Damage ต่อเนื่องจนจบ
+          </p>
+          <p class="sub">
+            ถ้าเวลาในรันเหลือน้อยกว่าเวลาจำกัดของ Phase
+            ตัวจับเวลาจะปรับตามเวลาที่เหลือ
+            อย่าเข้าช่วงท้ายโดยที่สกิลหลักยังไม่พร้อม
+          </p>
+        </article>
+      </section>
 
-  <footer><img class="footer-logo" src="img/comons/txM1bopK_400x400.jpg" alt="" width="24" height="24" loading="lazy">BeyondReach · MapleStory M · Made for the guild.</footer>
-</main>
-</body>
+      <section id="sources" aria-labelledby="sources-h">
+        <div>
+          <p class="label">References</p>
+          <h2 id="sources-h">แหล่งอ้างอิง</h2>
+        </div>
+        <article class="card">
+          <h3>Guild mechanics notes</h3>
+          <p>
+            รายละเอียดเกจ 0/30 สูตรสะสมเกจ หน้าที่เสาสีเหลืองและสีม่วง
+            ผลเมื่อเกจเต็มใน Phase 1–2 และลำดับสกิล Phase 2
+            ใช้ข้อมูลที่สมาชิกกิลด์ส่งให้เมื่อ 5 พฤศจิกายน 2026
+          </p>
+        </article>
+        <article class="card">
+          <h3>Official MapleStory M Global Patch Notes</h3>
+          <p>
+            ภาพประกอบในหน้านี้มาจาก Nexon Patch Notes วันที่ 7 มีนาคม 2024
+            (Fairy Dust, Charge, Laser Streak) และ 28 สิงหาคม 2025 (ภาพบอสและ
+            Mechanics อื่น ๆ) คลิกภาพเพื่อเปิดขนาดเต็มในแท็บใหม่
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://forum.nexon.com/MapleStoryMGlobal/board_view?allBoard=1&amp;thread=2518143"
+                >7 Mar 2024 · Commander Lucid: Bomb และ Dragon</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://forum.nexon.com/MapleStoryMGlobal/board_view?allBoard=1&amp;board=2690&amp;thread=3115950"
+                >28 Aug 2025 · Chaos Lucid: Butterflies, Statue และ Special
+                pattern</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://forum.nexon.com/MapleStoryMGlobal/board_view?board=2690&amp;thread=3448821"
+                >21 May 2026 · Statue, Charge และ Phase 3 UI improvements</a
+              >
+            </li>
+          </ul>
+          <p class="sub">
+            ตรวจแหล่งอ้างอิงเมื่อ 5 พฤศจิกายน 2026 ข้อมูลอาจเปลี่ยนตาม Patch;
+            ใช้คำเตือนและเงื่อนไขในเกมประกอบทุกครั้ง
+          </p>
+        </article>
+      </section>
+
+      <footer>
+        <img
+          class="footer-logo"
+          src="img/comons/txM1bopK_400x400.jpg"
+          alt=""
+          width="24"
+          height="24"
+          loading="lazy" />BeyondReach · MapleStory M · Made for the guild.
+      </footer>
+    </main>
+  </body>
 </html>
