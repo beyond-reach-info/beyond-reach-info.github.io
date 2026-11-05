@@ -1,0 +1,21 @@
+/* Reading layout for the Thai Chaos Lucid guide. */
+section{scroll-margin-top:24px}
+.card ul,.card ol{margin:0;padding-left:24px;display:flex;flex-direction:column;gap:10px}
+.card a{color:var(--accent);overflow-wrap:anywhere;text-underline-offset:3px}
+.card p,.card li{overflow-wrap:anywhere}
+h1 .sub{font-size:.65em}
+.guide-figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+.guide-figure>a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;cursor:zoom-in}
+.guide-figure img{display:block;max-width:100%;height:auto;margin-inline:auto}
+.guide-figure figcaption{font-size:.875rem;color:var(--muted);overflow-wrap:anywhere}
+.guide-figure figcaption a{color:var(--accent)}
+.guide-sprite img{object-fit:contain}
+.guide-sprite>a{padding:12px}
+.gauge-alert{border-left:4px solid var(--notice);background:var(--accent-bg);padding:12px 16px;border-radius:6px}
+.table-scroll{max-width:100%;overflow-x:auto}
+.table-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+table{width:100%;border-collapse:collapse;font-size:1rem}
+caption{text-align:left;font-weight:800;margin-bottom:10px}
+th,td{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+thead{background:var(--accent-bg)}
+@media(max-width:600px){th,td{padding:10px 8px}}
